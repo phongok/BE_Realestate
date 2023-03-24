@@ -22,13 +22,13 @@ public class UserControler {
 	@Autowired
 	private UserInforService userInforService;
 	
-	@PostMapping("/create")
+	@PostMapping("/userinfors")
 	public UserInfor createUserInfor (@RequestBody UserInfor userInfor) {
 		userInforService.saveInforUser(userInfor);
 		return userInfor;
 	}
 	
-	@PutMapping("/update")
+	@PutMapping("/userinfors")
 	public UserInfor updateUserInfor (@RequestBody UserInfor userInfor) {
 		userInforService.saveInforUser(userInfor);
 		return userInfor;

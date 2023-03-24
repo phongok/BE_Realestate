@@ -29,6 +29,7 @@ public class CateroryController {
 	
 	@PostMapping("caterorys")
 	public Category createCaterory(@RequestBody Category category) {
+		category.setAction(true);;
 		cateroryService.saveCaterory(category);
 		return category;
 	}

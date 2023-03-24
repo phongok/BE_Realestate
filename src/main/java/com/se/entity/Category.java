@@ -35,6 +35,14 @@ public class Category {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public boolean isAction() {
+		return isAction;
+	}
+
+	public void setAction(boolean isAction) {
+		this.isAction = isAction;
+	}
 	
 	
 	

@@ -23,7 +23,7 @@ import com.se.service.UserServices;
 import com.se.util.JwtUltility;
 
 @org.springframework.web.bind.annotation.RestController
-@RequestMapping("/real_estate")
+@RequestMapping("/authen")
 public class AuthenController {
 	
 	
