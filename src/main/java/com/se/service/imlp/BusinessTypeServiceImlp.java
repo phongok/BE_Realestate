@@ -42,4 +42,22 @@ public class BusinessTypeServiceImlp implements BusinessTypeService{
 		
 	}
 
+	@Override
+	public List<BusinessType> getAllBusinessTypeSell() {
+		// TODO Auto-generated method stub
+		return typeofsaleRepository.getBusinessTypeSell();
+	}
+
+	@Override
+	public List<BusinessType> getAllBusinessTypeRent() {
+		// TODO Auto-generated method stub
+		return typeofsaleRepository.getBusinessTypeRent();
+	}
+
+	@Override
+	public List<BusinessType> getAllBusinessTypeProtect() {
+		// TODO Auto-generated method stub
+		return typeofsaleRepository.getBusinessTypeProtect();
+	}
+
 }

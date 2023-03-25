@@ -43,6 +43,27 @@ public class Category {
 	public void setAction(boolean isAction) {
 		this.isAction = isAction;
 	}
+
+	public Category(long id, String name, boolean isAction) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.isAction = isAction;
+	}
+
+	public Category() {
+		super();
+	}
+
+	public Category(long id) {
+		super();
+		this.id = id;
+	}
+
+	@Override
+	public String toString() {
+		return "Category [id=" + id + ", name=" + name + ", isAction=" + isAction + "]";
+	}
 	
 	
 	
