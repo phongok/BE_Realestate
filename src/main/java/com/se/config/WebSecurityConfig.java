@@ -53,13 +53,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().authorizeRequests()
 				.antMatchers("/authen/register", "/authen/login", "/authen/hello", "/authen/signout",
-						"/api/userinfors/{id}", "/api/caterorys", "/api/caterorys/{id}","/api/businessTypes", "/api/businessTypesSell")
+						"/api/userinfors/{id}", "/api/caterorys", "/api/caterorys/{id}", "/api/businessTypes/listSell", "/api/homes")
 				.permitAll().anyRequest().authenticated().and().exceptionHandling()
 				.authenticationEntryPoint(authenticationEntryPoint).and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 //        http.exceptionHandling().accessDeniedHandler(new CustomAccessDeniedHandler()).and()
 //        .exceptionHandling().authenticationEntryPoint(new CustomHttp403ForbiddenEntryPoint());
 
+        
 		http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 	}
 }

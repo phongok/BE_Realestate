@@ -29,13 +29,13 @@ public class BusinessTypeController {
 		return map;
 	}
 	
-	@GetMapping("businessTypesSell")
+	@GetMapping("businessTypes/listSell")
 	public Map<String, List<BusinessType>> ListBusinessTypeSell() {
 		Map<String, List<BusinessType>> map = new HashMap<>();
 		map.put("data", businessTypeService.getAllBusinessTypeSell());
 		return map;
 	}
-	@GetMapping("businessTypesRent")
+	@GetMapping("businessTypesRent/listRent")
 	public Map<String, List<BusinessType>> ListBusinessTypeRent() {
 		Map<String, List<BusinessType>> map = new HashMap<>();
 		map.put("data", businessTypeService.getAllBusinessTypeRent());
@@ -43,7 +43,7 @@ public class BusinessTypeController {
 	}
 	
 	
-	@GetMapping("businessTypesProtect")
+	@GetMapping("businessTypes/listProtect")
 	public Map<String, List<BusinessType>> ListBusinessTypeProtect() {
 		Map<String, List<BusinessType>> map = new HashMap<>();
 		map.put("data", businessTypeService.getAllBusinessTypeProtect());
@@ -57,6 +57,7 @@ public class BusinessTypeController {
 
 	@PostMapping("businessTypes")
 	public BusinessType createBusinessType(@RequestBody BusinessType businessType) {
+		businessType.setAction(true);
 		businessTypeService.saveBusinessType(businessType);
 		return businessType;
 	}

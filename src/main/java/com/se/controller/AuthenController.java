@@ -79,7 +79,8 @@ public class AuthenController {
 			tokenServices.updateToken(token);
 		else
 			tokenServices.saveToken(token);
-		return ResponseEntity.ok(token.getToken());
+		
+		return ResponseEntity.ok( token.getToken());
 	}
 	
 	@GetMapping("/signout")

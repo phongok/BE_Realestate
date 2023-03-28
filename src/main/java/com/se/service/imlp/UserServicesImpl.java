@@ -37,7 +37,7 @@ public class UserServicesImpl implements UserServices{
 	@Override
 	public User saveUser(UserDTO u) {
 		
-		Role memberRole = roleServices.getMemberRole(Long.valueOf(3));
+		Role memberRole = roleServices.getMemberRole(Long.valueOf(1));
 		System.out.println(memberRole);
 		
 		Set<Role> roles = new HashSet<>();
