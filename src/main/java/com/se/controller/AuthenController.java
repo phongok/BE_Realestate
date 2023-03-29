@@ -9,6 +9,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -44,16 +45,20 @@ public class AuthenController {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
+	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("/hello")
 	public String helloWorld() {
 		return "Hello World";
 	}
 	
+	@CrossOrigin(origins = "http://localhost:3000")
 	@PostMapping("/register")
 	public User registerUser(@RequestBody UserDTO u) {
 		return userServices.saveUser(u);
 	}
 	
+	
+	@CrossOrigin(origins = "http://localhost:3000")
 	@PostMapping("/login")
 	public ResponseEntity<?> signInUser(@RequestBody UserDTO u){
 		
@@ -83,6 +88,8 @@ public class AuthenController {
 		return ResponseEntity.ok( token.getToken());
 	}
 	
+	
+	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("/signout")
 	public String signOut() {
 		SecurityContextHolder.getContext();

@@ -9,5 +9,4 @@ public class Application {
 		System.out.println("Starting real_estate service");
 		SpringApplication.run(Application.class, args);
 	}
-
 }
