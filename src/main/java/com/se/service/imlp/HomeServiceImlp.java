@@ -16,6 +16,8 @@ import com.se.service.HomeService;
 public class HomeServiceImlp implements HomeService {
 	@Autowired
 	private HomeRepository homeRepository;
+	
+	
 	@Override
 	public List<Home> getAllHome() {
 		// TODO Auto-generated method stub
