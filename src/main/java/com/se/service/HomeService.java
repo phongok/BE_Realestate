@@ -7,10 +7,10 @@ import com.se.entity.Home;
 
 public interface HomeService {
 	public List<Home> getAllHome();
-	public Home getHomeById(UUID uuid);
+	public Home getHomeById(long id);
 	public void saveHome(Home home);
-	public void deleteById(UUID uuid);
+	public void deleteById(long uuid);
 	
-	public List<Home> getHome_SellByIDUser();
-	public List<Home> getHome_RentByIDUser();
+	public List<Home> getHome_Sell();
+	public List<Home> getHome_Rent();
 }

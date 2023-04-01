@@ -5,6 +5,8 @@ import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
@@ -21,7 +23,8 @@ import javax.persistence.TemporalType;
 public class Home {
 
 	@Id
-	private UUID id; // id nhà
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id; // id nhà
 
 	@OneToOne
 	@JoinColumn(name = "idCategory")
@@ -63,11 +66,11 @@ public class Home {
 	private String url_img5;
 	private String url_img6;
 
-	public UUID getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(UUID id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -215,7 +218,7 @@ public class Home {
 		this.url_img6 = url_img6;
 	}
 
-	public Home(UUID id, Category category, BusinessType businessType, User user, String name, float length,
+	public Home(long id, Category category, BusinessType businessType, User user, String name, float length,
 			float width, float acreage, String price, Date dateSubmitted, String status, String address,
 			String decription, String url_img1, String url_img2, String url_img3, String url_img4, String url_img5,
 			String url_img6) {

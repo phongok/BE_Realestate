@@ -11,11 +11,11 @@ import org.springframework.stereotype.Repository;
 import com.se.entity.Home;
 
 @Repository
-public interface HomeRepository extends JpaRepository<Home, UUID> {
+public interface HomeRepository extends JpaRepository<Home, Long> {
 
-	@Query(value = "select * from realestate.home where id_category = 1 and id_user = :id_user", nativeQuery = true)
-	public List<Home> getHomeSellbyIdUser(@Param("id_user") Integer id_user) ;
+	@Query(value = "select * from realestate.home where id_category = 1 ", nativeQuery = true)
+	public List<Home> getHomeSell() ;
 	
-	@Query(value = "select * from realestate.home where id_category = 2 and id_user = :id_user", nativeQuery = true)
-	public List<Home> getHomeRentbyIdUser(@Param("id_user") Integer id_user) ;
+	@Query(value = "select * from realestate.home where id_category = 2", nativeQuery = true)
+	public List<Home> getHomeRent() ;
 }

@@ -25,15 +25,15 @@ public class HomeServiceImlp implements HomeService {
 	}
 
 	@Override
-	public Home getHomeById(UUID uuid) {
+	public Home getHomeById(long id) {
 		// TODO Auto-generated method stub
-		Optional<Home> result =  homeRepository.findById(uuid);
+		Optional<Home> result =  homeRepository.findById(id);
 		Home home = null;
 		if (result.isPresent()) {
 			home = result.get();
 		}
 		else {
-			throw new RuntimeException("Did not find home id = "+uuid);
+			throw new RuntimeException("Did not find home id = "+id);
 		}
 		return home;
 	}
@@ -46,22 +46,22 @@ public class HomeServiceImlp implements HomeService {
 	}
 
 	@Override
-	public void deleteById(UUID uuid) {
+	public void deleteById(long id) {
 		// TODO Auto-generated method stub
-		homeRepository.deleteById(uuid);
+		homeRepository.deleteById(id);
 		
 	}
 
 	@Override
-	public List<Home> getHome_SellByIDUser() {
+	public List<Home> getHome_Sell() {
 		// TODO Auto-generated method stub
-		return null;
+		return homeRepository.getHomeSell();
 	}
 
 	@Override
-	public List<Home> getHome_RentByIDUser() {
+	public List<Home> getHome_Rent() {
 		// TODO Auto-generated method stub
-		return null;
+		return homeRepository.getHomeRent();
 	}
 
 	

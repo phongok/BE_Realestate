@@ -26,8 +26,7 @@ public class HomeController {
 	@PostMapping("homes")
 	public Home createHome(@RequestBody Home home) {
 		
-		UUID uuid = UUID.randomUUID();
-		home.setId(uuid);
+		
 		homeService.saveHome(home);
 		return home;
 	}
@@ -44,20 +43,33 @@ public class HomeController {
 	}
 	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("homes/{id}")
-	public Home getHomeById(@PathVariable UUID uuid) {
-		return homeService.getHomeById(uuid);
+	public Home getHomeById(@PathVariable long id) {
+		
+		return homeService.getHomeById(id);
 		
 	}
 	
 	@CrossOrigin(origins = "http://localhost:3000")
 	@DeleteMapping("homes/{id}")
-	public String deleteHome(@PathVariable UUID uuid) {
-		Home home = homeService.getHomeById(uuid);
+	public String deleteHome(@PathVariable long id) {
+		Home home = homeService.getHomeById(id);
 		if (home==null) {
-			throw new RuntimeException("Did not found home id = "+uuid);
+			throw new RuntimeException("Did not found home id = "+id);
 		}
-		
-		homeService.deleteById(uuid);
-		return "Delete home id = "+ uuid;
+		homeService.deleteById(id);
+		return "Delete home id = "+ id;
 	}
+	
+	@CrossOrigin(origins = "http://localhost:3000")
+	@GetMapping("listHomeSell")
+	public List<Home> listHomeSell() {
+		return homeService.getHome_Sell();
+	}
+	
+	@CrossOrigin(origins = "http://localhost:3000")
+	@GetMapping("listHomeRent")
+	public List<Home> listHomeRent() {
+		return homeService.getHome_Rent();
+	}
+	
 }
