@@ -13,63 +13,61 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.se.entity.Home;
-import com.se.service.HomeService;
+import com.se.entity.RealEstate;
+import com.se.service.RealEstateService;
 
 @RestController
 @RequestMapping("/api")
-public class HomeController {
+public class RealEstateController {
 	@Autowired
-	private HomeService homeService;
+	private RealEstateService realEstateService;
 	
 	@CrossOrigin(origins = "http://localhost:3000")
-	@PostMapping("homes")
-	public Home createHome(@RequestBody Home home) {
-		
-		
-		homeService.saveHome(home);
+	@PostMapping("realestates")
+	public RealEstate createHome(@RequestBody RealEstate home) {
+		realEstateService.saveHome(home);
 		return home;
 	}
 	@CrossOrigin(origins = "http://localhost:3000")
-	@PutMapping("homes")
-	public Home updateHome(@RequestBody Home home) {
-		homeService.saveHome(home);
+	@PutMapping("realestates")
+	public RealEstate updateHome(@RequestBody RealEstate home) {
+		realEstateService.saveHome(home);
 		return home;
 	}
 	@CrossOrigin(origins = "http://localhost:3000")
-	@GetMapping("homes")
-	public List<Home> listHome() {
-		return homeService.getAllHome();
+	@GetMapping("realestates")
+	public List<RealEstate> listHome() {
+		return realEstateService.getAllHome();
 	}
 	@CrossOrigin(origins = "http://localhost:3000")
-	@GetMapping("homes/{id}")
-	public Home getHomeById(@PathVariable long id) {
+	@GetMapping("realestates/{id}")
+	public RealEstate getHomeById(@PathVariable long id) {
 		
-		return homeService.getHomeById(id);
+		return realEstateService.getHomeById(id);
 		
 	}
 	
 	@CrossOrigin(origins = "http://localhost:3000")
-	@DeleteMapping("homes/{id}")
+	@DeleteMapping("realestates/{id}")
 	public String deleteHome(@PathVariable long id) {
-		Home home = homeService.getHomeById(id);
+		RealEstate home = realEstateService.getHomeById(id);
 		if (home==null) {
 			throw new RuntimeException("Did not found home id = "+id);
 		}
-		homeService.deleteById(id);
+		realEstateService.deleteById(id);
 		return "Delete home id = "+ id;
 	}
 	
 	@CrossOrigin(origins = "http://localhost:3000")
-	@GetMapping("listHomeSell")
-	public List<Home> listHomeSell() {
-		return homeService.getHome_Sell();
+	@GetMapping("listrealestateSell")
+	public List<RealEstate> listHomeSell() {
+		return realEstateService.getHome_Sell();
 	}
 	
 	@CrossOrigin(origins = "http://localhost:3000")
-	@GetMapping("listHomeRent")
-	public List<Home> listHomeRent() {
-		return homeService.getHome_Rent();
+	@GetMapping("listrealestateRent")
+	public List<RealEstate> listHomeRent() {
+		return realEstateService.getHome_Rent();
 	}
 	
 }

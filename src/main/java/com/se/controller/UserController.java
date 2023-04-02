@@ -23,4 +23,9 @@ public class UserController {
 		
 		return userServices.getUserByUserName(username);
 	}
+	@CrossOrigin(origins = "http://localhost:3000")
+	@GetMapping("users/count")
+	public String getAccountNumber() {
+		return userServices.getUserNumber()+"";
+	}
 }

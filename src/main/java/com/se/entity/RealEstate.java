@@ -19,8 +19,8 @@ import javax.persistence.TemporalType;
 // Nhà hoặc khách sạn
 
 @Entity
-@Table(name = "Home")
-public class Home {
+@Table(name = "realestate")
+public class RealEstate {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,8 +31,8 @@ public class Home {
 	private Category category; // id danh mục
 
 	@OneToOne
-	@JoinColumn(name = "idBusinessType")
-	private BusinessType businessType; // id loại kinh doanh
+	@JoinColumn(name = "idNewsType")
+	private NewsType newsType; // id loại kinh doanh
 
 	@ManyToOne
 	@JoinColumn(name = "idUser") // người đăng
@@ -82,12 +82,12 @@ public class Home {
 		this.category = category;
 	}
 
-	public BusinessType getBusinessType() {
-		return businessType;
+	public NewsType getNewsType() {
+		return newsType;
 	}
 
-	public void setBusinessType(BusinessType businessType) {
-		this.businessType = businessType;
+	public void setNewsType(NewsType newsType) {
+		this.newsType = newsType;
 	}
 
 	public User getUser() {
@@ -218,14 +218,13 @@ public class Home {
 		this.url_img6 = url_img6;
 	}
 
-	public Home(long id, Category category, BusinessType businessType, User user, String name, float length,
-			float width, float acreage, String price, Date dateSubmitted, String status, String address,
-			String decription, String url_img1, String url_img2, String url_img3, String url_img4, String url_img5,
-			String url_img6) {
+	public RealEstate(long id, Category category, NewsType newsType, User user, String name, float length, float width,
+			float acreage, String price, Date dateSubmitted, String status, String address, String decription,
+			String url_img1, String url_img2, String url_img3, String url_img4, String url_img5, String url_img6) {
 		super();
 		this.id = id;
 		this.category = category;
-		this.businessType = businessType;
+		this.newsType = newsType;
 		this.user = user;
 		this.name = name;
 		this.length = length;
@@ -244,13 +243,13 @@ public class Home {
 		this.url_img6 = url_img6;
 	}
 
-	public Home() {
+	public RealEstate() {
 		super();
 	}
 
 	@Override
 	public String toString() {
-		return "Home [id=" + id + ", category=" + category + ", businessType=" + businessType + ", user=" + user
+		return "RealEstate [id=" + id + ", category=" + category + ", newsType=" + newsType + ", user=" + user
 				+ ", name=" + name + ", length=" + length + ", width=" + width + ", acreage=" + acreage + ", price="
 				+ price + ", dateSubmitted=" + dateSubmitted + ", status=" + status + ", address=" + address
 				+ ", decription=" + decription + ", url_img1=" + url_img1 + ", url_img2=" + url_img2 + ", url_img3="

@@ -9,8 +9,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "business_type")
-public class BusinessType {
+
+public class NewsType {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -56,7 +56,7 @@ public class BusinessType {
 		this.isAction = isAction;
 	}
 
-	public BusinessType(long id, Category category, String name, boolean isAction) {
+	public NewsType(long id, Category category, String name, boolean isAction) {
 		super();
 		this.id = id;
 		this.category = category;
@@ -64,7 +64,7 @@ public class BusinessType {
 		this.isAction = isAction;
 	}
 
-	public BusinessType() {
+	public NewsType() {
 		super();
 	}
 

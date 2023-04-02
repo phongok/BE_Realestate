@@ -7,28 +7,28 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.se.entity.Home;
-import com.se.repository.HomeRepository;
-import com.se.service.HomeService;
+import com.se.entity.RealEstate;
+import com.se.repository.RealEstateRepository;
+import com.se.service.RealEstateService;
 
 
 @Service
-public class HomeServiceImlp implements HomeService {
+public class RealEstateServiceImlp implements RealEstateService {
 	@Autowired
-	private HomeRepository homeRepository;
+	private RealEstateRepository realEstateRepository;
 	
 	
 	@Override
-	public List<Home> getAllHome() {
+	public List<RealEstate> getAllHome() {
 		// TODO Auto-generated method stub
-		return homeRepository.findAll();
+		return realEstateRepository.findAll();
 	}
 
 	@Override
-	public Home getHomeById(long id) {
+	public RealEstate getHomeById(long id) {
 		// TODO Auto-generated method stub
-		Optional<Home> result =  homeRepository.findById(id);
-		Home home = null;
+		Optional<RealEstate> result =  realEstateRepository.findById(id);
+		RealEstate home = null;
 		if (result.isPresent()) {
 			home = result.get();
 		}
@@ -39,29 +39,29 @@ public class HomeServiceImlp implements HomeService {
 	}
 
 	@Override
-	public void saveHome(Home home) {
+	public void saveHome(RealEstate home) {
 		// TODO Auto-generated method stub
-		homeRepository.save(home);
+		realEstateRepository.save(home);
 		
 	}
 
 	@Override
 	public void deleteById(long id) {
 		// TODO Auto-generated method stub
-		homeRepository.deleteById(id);
+		realEstateRepository.deleteById(id);
 		
 	}
 
 	@Override
-	public List<Home> getHome_Sell() {
+	public List<RealEstate> getHome_Sell() {
 		// TODO Auto-generated method stub
-		return homeRepository.getHomeSell();
+		return realEstateRepository.getHomeSell();
 	}
 
 	@Override
-	public List<Home> getHome_Rent() {
+	public List<RealEstate> getHome_Rent() {
 		// TODO Auto-generated method stub
-		return homeRepository.getHomeRent();
+		return realEstateRepository.getHomeRent();
 	}
 
 	

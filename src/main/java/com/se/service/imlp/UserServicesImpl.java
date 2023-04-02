@@ -1,7 +1,9 @@
 package com.se.service.imlp;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
+import java.util.logging.Logger;
 
 import javax.transaction.Transactional;
 
@@ -21,6 +23,8 @@ import com.se.repository.UserRepository;
 import com.se.service.RoleServices;
 import com.se.service.UserServices;
 
+import ch.qos.logback.classic.joran.action.LoggerAction;
+
 @Service
 @Transactional
 public class UserServicesImpl implements UserServices{
@@ -37,7 +41,7 @@ public class UserServicesImpl implements UserServices{
 	@Override
 	public User saveUser(UserDTO u) {
 		
-		Role memberRole = roleServices.getMemberRole(Long.valueOf(3));
+		Role memberRole = roleServices.getMemberRole(Long.valueOf(2));
 		System.out.println(memberRole);
 		
 		Set<Role> roles = new HashSet<>();
@@ -75,6 +79,13 @@ public class UserServicesImpl implements UserServices{
 	@Override
 	public User getUserByUserName(String username) {
 		return userRepository.findUserByUsername(username);
+	}
+
+	@Override
+	public int getUserNumber() {
+		// TODO Auto-generated method stub
+		
+		return userRepository.getCountUser() ;
 	}
 	
 }

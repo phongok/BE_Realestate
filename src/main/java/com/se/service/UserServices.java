@@ -10,4 +10,6 @@ public interface UserServices {
 	public UserPrincipal getUserByUsername(String username);
 	
 	public User getUserByUserName(String username);
+	
+	public int getUserNumber();
 }

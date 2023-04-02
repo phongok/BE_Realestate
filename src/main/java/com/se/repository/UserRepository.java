@@ -13,5 +13,8 @@ import com.se.entity.User;
 public interface UserRepository extends JpaRepository<User, Long> {
 	public User findUserByUsername(String username);
 	
+	@Query(value = "select count(*) from realestatedb.user ", nativeQuery = true)
+	public int getCountUser() ;
+	
 	
 }
