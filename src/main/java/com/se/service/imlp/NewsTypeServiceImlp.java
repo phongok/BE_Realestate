@@ -54,6 +54,12 @@ public class NewsTypeServiceImlp implements NewsTypeService{
 		return newsTypeRepository.getNewsTypeRent();
 	}
 
+	@Override
+	public int getNewsTypeNumber() {
+		// TODO Auto-generated method stub
+		return newsTypeRepository.getCountNewsType();
+	}
+
 	
 
 }

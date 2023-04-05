@@ -13,4 +13,6 @@ public interface NewsTypeService {
 
 	public NewsType getNewsTypeById(long theId) ;
 	public void saveNewsType(NewsType typeofsale);
+	
+	public int getNewsTypeNumber();
 }

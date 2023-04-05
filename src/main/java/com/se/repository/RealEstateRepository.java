@@ -19,5 +19,6 @@ public interface RealEstateRepository extends JpaRepository<RealEstate, Long> {
 	@Query(value = "select * from realestatedb.realestate where id_category = 2", nativeQuery = true)
 	public List<RealEstate> getHomeRent() ;
 	
-//	public int getCountRealeState();
+	@Query(value = "select count(*) from realestatedb.realestate", nativeQuery = true)
+	public int getCountRealeState();
 }

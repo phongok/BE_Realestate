@@ -5,9 +5,12 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.se.entity.RealEstate;
+import com.se.entity.User;
 import com.se.repository.RealEstateRepository;
 import com.se.service.RealEstateService;
 
@@ -62,6 +65,18 @@ public class RealEstateServiceImlp implements RealEstateService {
 	public List<RealEstate> getHome_Rent() {
 		// TODO Auto-generated method stub
 		return realEstateRepository.getHomeRent();
+	}
+
+	@Override
+	public int getRealEstateNumber() {
+		// TODO Auto-generated method stub
+		return realEstateRepository.getCountRealeState();
+	}
+
+	@Override
+	public Page<RealEstate> getAllRealState_Paging(Pageable pageable) {
+		// TODO Auto-generated method stub
+		return realEstateRepository.findAll(pageable);
 	}
 
 	

@@ -1,6 +1,7 @@
 package com.se.service.imlp;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.logging.Logger;
@@ -8,6 +9,8 @@ import java.util.logging.Logger;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -41,7 +44,7 @@ public class UserServicesImpl implements UserServices{
 	@Override
 	public User saveUser(UserDTO u) {
 		
-		Role memberRole = roleServices.getMemberRole(Long.valueOf(2));
+		Role memberRole = roleServices.getMemberRole(Long.valueOf(1));
 		System.out.println(memberRole);
 		
 		Set<Role> roles = new HashSet<>();
@@ -86,6 +89,12 @@ public class UserServicesImpl implements UserServices{
 		// TODO Auto-generated method stub
 		
 		return userRepository.getCountUser() ;
+	}
+
+	@Override
+	public Page<User> getAllUser_Paging(Pageable pageable) {
+		// TODO Auto-generated method stub
+		return userRepository.findAll(pageable);
 	}
 	
 }

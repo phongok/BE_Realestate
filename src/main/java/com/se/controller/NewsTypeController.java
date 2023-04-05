@@ -59,4 +59,9 @@ public class NewsTypeController {
 		return newsType;
 	}
 
+	@CrossOrigin(origins = "http://localhost:3000")
+	@GetMapping("newsTypes/count")
+	public String getNewsStateNumber() {
+		return newsTypeService.getNewsTypeNumber()+"";
+	}
 }

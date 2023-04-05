@@ -15,6 +15,7 @@ public interface NewsTypeRepository extends JpaRepository<NewsType, Long>{
 	@Query(value = "SELECT * FROM realestatedb.newstype where idcategory = 2", nativeQuery = true)
 	public List<NewsType> getNewsTypeRent() ;
 
-		
+	@Query(value = "select count(*) from realestatedb.news_type", nativeQuery = true)
+	public int getCountNewsType();
 	
 }
