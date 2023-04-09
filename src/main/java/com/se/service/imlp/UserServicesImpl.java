@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -44,7 +45,7 @@ public class UserServicesImpl implements UserServices{
 	@Override
 	public User saveUser(UserDTO u) {
 		
-		Role memberRole = roleServices.getMemberRole(Long.valueOf(1));
+		Role memberRole = roleServices.getMemberRole(Long.valueOf(2));
 		System.out.println(memberRole);
 		
 		Set<Role> roles = new HashSet<>();
@@ -92,9 +93,18 @@ public class UserServicesImpl implements UserServices{
 	}
 
 	@Override
+	public Page<User> getAllUser_Paging(String keyword, Pageable pageable) {
+		return userRepository.findAll(keyword, pageable);
+	}
+
+	@Override
 	public Page<User> getAllUser_Paging(Pageable pageable) {
-		// TODO Auto-generated method stub
+		
 		return userRepository.findAll(pageable);
 	}
+
+
+
+	
 	
 }

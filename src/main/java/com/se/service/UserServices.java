@@ -19,5 +19,8 @@ public interface UserServices {
 	
 	public int getUserNumber();
 	
-	public Page<User> getAllUser_Paging(Pageable pageable);
+	public Page<User> getAllUser_Paging(String keyword, Pageable pageable);
+	public Page<User> getAllUser_Paging( Pageable pageable);
+	
+	
 }

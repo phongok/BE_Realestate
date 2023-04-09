@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.se.entity.NewsType;
@@ -16,11 +18,7 @@ public class NewsTypeServiceImlp implements NewsTypeService{
 	@Autowired
 	private NewsTypeRepository newsTypeRepository;
 	
-	@Override
-	public List<NewsType> getAllNewsType() {
-		// TODO Auto-generated method stub
-		return newsTypeRepository.findAll();
-	}
+	
 
 	@Override
 	public NewsType getNewsTypeById(long theId) {
@@ -58,6 +56,18 @@ public class NewsTypeServiceImlp implements NewsTypeService{
 	public int getNewsTypeNumber() {
 		// TODO Auto-generated method stub
 		return newsTypeRepository.getCountNewsType();
+	}
+
+	@Override
+	public Page<NewsType> getAllNewsPage_Paging(String keyword, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return newsTypeRepository.findAll(keyword, pageable);
+	}
+
+	@Override
+	public Page<NewsType> getAllNewsPage_Paging(Pageable pageable) {
+		// TODO Auto-generated method stub
+		return newsTypeRepository.findAll(pageable);
 	}
 
 	
