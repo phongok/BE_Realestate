@@ -27,11 +27,10 @@ public class CateroryController {
 
 	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("caterorys")
-	public Map<String, List<Category>> listCaterory() {
+	public  List<Category> listCaterory() {
 		List<Category> categories = cateroryService.getAllCaterory();
-		Map<String, List<Category>> map = new HashMap<>();
-		map.put("data", cateroryService.getAllCaterory());
-		return map;
+		
+		return categories;
 	}
 	
 	

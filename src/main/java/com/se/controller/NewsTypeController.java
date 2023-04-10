@@ -30,12 +30,19 @@ public class NewsTypeController {
 	
 	
 	@CrossOrigin(origins = "http://localhost:3000")
-	@GetMapping("newsTypesRent/listRent")
-	public Map<String, List<NewsType>> ListNewsTypeRent() {
-		Map<String, List<NewsType>> map = new HashMap<>();
-		map.put("data", newsTypeService.getAllNewsTypeRent());
-		return map;
+	@GetMapping("newsTypesSell/listSell")
+	public  List<NewsType> ListNewsTypeSell() {
+		return newsTypeService.getAllNewsTypeSell();
 	}
+	
+	
+	@CrossOrigin(origins = "http://localhost:3000")
+	@GetMapping("newsTypesRent/listRent")
+	public  List<NewsType> ListNewsTypeRent() {
+		return newsTypeService.getAllNewsTypeRent();
+	}
+	
+
 	
 	
 	@CrossOrigin(origins = "http://localhost:3000")

@@ -43,7 +43,7 @@ public class NewsTypeServiceImlp implements NewsTypeService{
 	@Override
 	public List<NewsType> getAllNewsTypeSell() {
 		// TODO Auto-generated method stub
-		return newsTypeRepository.getNewsTypeRent();
+		return newsTypeRepository.getNewsTypeSell();
 	}
 
 	@Override
@@ -52,6 +52,8 @@ public class NewsTypeServiceImlp implements NewsTypeService{
 		return newsTypeRepository.getNewsTypeRent();
 	}
 
+	
+	
 	@Override
 	public int getNewsTypeNumber() {
 		// TODO Auto-generated method stub
