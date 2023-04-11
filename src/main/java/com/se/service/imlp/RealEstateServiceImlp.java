@@ -56,15 +56,15 @@ public class RealEstateServiceImlp implements RealEstateService {
 	}
 
 	@Override
-	public List<RealEstate> getHome_Sell() {
+	public Page<RealEstate> getHome_Sell(Pageable pageable) {
 		// TODO Auto-generated method stub
-		return realEstateRepository.getHomeSell();
+		return realEstateRepository.getHomeSell(pageable);
 	}
 
 	@Override
-	public List<RealEstate> getHome_Rent() {
+	public Page<RealEstate> getHome_Rent(Pageable pageable) {
 		// TODO Auto-generated method stub
-		return realEstateRepository.getHomeRent();
+		return realEstateRepository.getHomeRent(pageable);
 	}
 
 	@Override
@@ -77,6 +77,12 @@ public class RealEstateServiceImlp implements RealEstateService {
 	public Page<RealEstate> getAllRealState_Paging(Pageable pageable) {
 		// TODO Auto-generated method stub
 		return realEstateRepository.findAll(pageable);
+	}
+
+	@Override
+	public Page<RealEstate> getRealStateBuUserID(long iduser , Pageable pageable) {
+		// TODO Auto-generated method stub
+		return realEstateRepository.getRealStateBuUserId(iduser, pageable);
 	}
 
 	

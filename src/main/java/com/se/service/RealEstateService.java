@@ -15,10 +15,13 @@ public interface RealEstateService {
 	public void saveHome(RealEstate home);
 	public void deleteById(long uuid);
 	
-	public List<RealEstate> getHome_Sell();
-	public List<RealEstate> getHome_Rent();
+	public Page<RealEstate> getHome_Sell(Pageable pageable);
+	public Page<RealEstate> getHome_Rent(Pageable pageable);
 	
 	public int getRealEstateNumber();
 	
 	public Page<RealEstate> getAllRealState_Paging(Pageable pageable);
+	
+	
+	public Page<RealEstate> getRealStateBuUserID(long iduser, Pageable pageable) ;
 }

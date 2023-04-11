@@ -64,14 +64,18 @@ public class RealEstateController {
 	
 	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("listrealestateSell")
-	public List<RealEstate> listHomeSell() {
-		return realEstateService.getHome_Sell();
+	public Page<RealEstate> listHomeSell( @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "1") int size) {
+		 Pageable pageable = PageRequest.of(page, size);
+		return realEstateService.getHome_Sell(pageable);
 	}
 	
 	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("listrealestateRent")
-	public List<RealEstate> listHomeRent() {
-		return realEstateService.getHome_Rent();
+	public Page<RealEstate> listHomeRent( @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "1") int size) {
+		 Pageable pageable = PageRequest.of(page, size);
+		return realEstateService.getHome_Rent(pageable);
 	}
 	
 	@CrossOrigin(origins = "http://localhost:3000")
@@ -85,6 +89,15 @@ public class RealEstateController {
             @RequestParam(defaultValue = "10") int size) {
 		 Pageable pageable = PageRequest.of(page, size);
 		 return realEstateService.getAllRealState_Paging(pageable);
+	}
+	
+	
+	@CrossOrigin(origins = "http://localhost:3000")
+	@GetMapping("realestates-user/{id_user}")
+	public Page<RealEstate> getRealStateBiIdUser(@PathVariable long id_user, @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "12") int size) {
+		 Pageable pageable = PageRequest.of(page, size);
+		return realEstateService.getRealStateBuUserID(id_user, pageable);
 	}
 	
 }
