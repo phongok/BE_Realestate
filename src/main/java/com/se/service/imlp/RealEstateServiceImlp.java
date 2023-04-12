@@ -80,9 +80,15 @@ public class RealEstateServiceImlp implements RealEstateService {
 	}
 
 	@Override
-	public Page<RealEstate> getRealStateBuUserID(long iduser , Pageable pageable) {
+	public Page<RealEstate> getRealStateByUserID(long iduser , Pageable pageable) {
 		// TODO Auto-generated method stub
-		return realEstateRepository.getRealStateBuUserId(iduser, pageable);
+		return realEstateRepository.getRealStateByUserId(iduser, pageable);
+	}
+
+	@Override
+	public Page<RealEstate> getRealStateByNewsTypeID(long idNews, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return realEstateRepository.getRealStateByNewsTypeID(idNews, pageable);
 	}
 
 	

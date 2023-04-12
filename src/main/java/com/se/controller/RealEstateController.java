@@ -94,10 +94,18 @@ public class RealEstateController {
 	
 	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("realestates-user/{id_user}")
-	public Page<RealEstate> getRealStateBiIdUser(@PathVariable long id_user, @RequestParam(defaultValue = "0") int page,
+	public Page<RealEstate> getRealStateByIdUser(@PathVariable long id_user, @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "12") int size) {
 		 Pageable pageable = PageRequest.of(page, size);
-		return realEstateService.getRealStateBuUserID(id_user, pageable);
+		return realEstateService.getRealStateByUserID(id_user, pageable);
+	}
+	
+	@CrossOrigin(origins = "http://localhost:3000")
+	@GetMapping("realestates-newstype/{id_newstype}")
+	public Page<RealEstate> getRealStateByIdNewsType(@PathVariable long id_newstype, @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "12") int size) {
+		 Pageable pageable = PageRequest.of(page, size);
+		return realEstateService.getRealStateByNewsTypeID(id_newstype, pageable);
 	}
 	
 }

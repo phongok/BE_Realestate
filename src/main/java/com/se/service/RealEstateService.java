@@ -23,5 +23,7 @@ public interface RealEstateService {
 	public Page<RealEstate> getAllRealState_Paging(Pageable pageable);
 	
 	
-	public Page<RealEstate> getRealStateBuUserID(long iduser, Pageable pageable) ;
+	public Page<RealEstate> getRealStateByUserID(long iduser, Pageable pageable) ;
+	
+	public Page<RealEstate> getRealStateByNewsTypeID(long idNews, Pageable pageable) ;
 }

@@ -26,5 +26,9 @@ public interface RealEstateRepository extends JpaRepository<RealEstate, Long> {
 	
 	
 	@Query(value = "SELECT * FROM realestatedb.realestate where id_user = ?1", nativeQuery = true)
-	public Page<RealEstate> getRealStateBuUserId(long idUser, Pageable pageable);
+	public Page<RealEstate> getRealStateByUserId(long idUser, Pageable pageable);
+	
+	
+	@Query(value = "SELECT * FROM realestatedb.realestate where id_news_type = ?1 and status = 'Đang hoạt động'", nativeQuery = true)
+	public Page<RealEstate> getRealStateByNewsTypeID(long idNews, Pageable pageable);
 }

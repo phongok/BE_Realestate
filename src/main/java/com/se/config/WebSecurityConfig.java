@@ -57,7 +57,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 						"/api/caterorys/{id}", "/api/newsTypes", "/api/newsTypes/count", "/api/newsType-paging",
 						"/api/newsTypesSell/listSell", "/api/newsTypesRent/listRent", "/api/realestates",
 						"/api/realestates-paging", "/api/realestates/{id}", "/api/realestates/count",
-						"/api/listrealestateSell", "/api/listrealestateRent", "/api/realestates-user/{id_user}")
+						"/api/listrealestateSell", "/api/listrealestateRent", "/api/realestates-user/{id_user}", "/api/realestates-newstype/{id_newstype}")
 				.permitAll().anyRequest().authenticated().and().exceptionHandling()
 				.authenticationEntryPoint(authenticationEntryPoint).and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
