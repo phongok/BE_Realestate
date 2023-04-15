@@ -15,17 +15,17 @@ import com.se.entity.RealEstate;
 @Repository
 public interface RealEstateRepository extends JpaRepository<RealEstate, Long> {
 
-	@Query(value = "select * from realestatedb.realestate where id_category = 1 ", nativeQuery = true)
+	@Query(value = "select * from realestatedb.realestate where id_category = 1 and status = 'Đang hoạt động'", nativeQuery = true)
 	public Page<RealEstate> getHomeSell(Pageable pageable) ;
 	
-	@Query(value = "select * from realestatedb.realestate where id_category = 2", nativeQuery = true)
+	@Query(value = "select * from realestatedb.realestate where id_category = 2 and status = 'Đang hoạt động'", nativeQuery = true)
 	public Page<RealEstate> getHomeRent(Pageable pageable) ;
 	
 	@Query(value = "select count(*) from realestatedb.realestate", nativeQuery = true)
 	public int getCountRealeState();
 	
 	
-	@Query(value = "SELECT * FROM realestatedb.realestate where id_user = ?1", nativeQuery = true)
+	@Query(value = "SELECT * FROM realestatedb.realestate where id_user = ?1 and status = 'Đang hoạt động'", nativeQuery = true)
 	public Page<RealEstate> getRealStateByUserId(long idUser, Pageable pageable);
 	
 	

@@ -52,7 +52,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().authorizeRequests()
-				.antMatchers("/authen/register", "/authen/login", "/authen/hello", "/authen/signout",
+				.antMatchers("/authen/register", "/authen/login", "/authen/hello", "/authen/signout","/api/checkuser",
 						"/api/users/{username}", "/api/users-paging", "/api/userscount", "/api/caterorys",
 						"/api/caterorys/{id}", "/api/newsTypes", "/api/newsTypes/count", "/api/newsType-paging",
 						"/api/newsTypesSell/listSell", "/api/newsTypesRent/listRent", "/api/realestates",
@@ -63,6 +63,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 //        http.exceptionHandling().accessDeniedHandler(new CustomAccessDeniedHandler()).and()
 //        .exceptionHandling().authenticationEntryPoint(new CustomHttp403ForbiddenEntryPoint());
+		
+//		http.cors().and().csrf().disable();
 
 		http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 	}

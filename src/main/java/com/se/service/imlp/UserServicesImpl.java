@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -26,6 +27,7 @@ import com.se.entity.UserPrincipal;
 import com.se.repository.UserRepository;
 import com.se.service.RoleServices;
 import com.se.service.UserServices;
+import com.se.util.JwtUltility;
 
 import ch.qos.logback.classic.joran.action.LoggerAction;
 
@@ -42,6 +44,11 @@ public class UserServicesImpl implements UserServices{
 	@Autowired
     private PasswordEncoder bcryptEncoder;
 	
+	
+
+	
+	private JwtUltility jwtUltility = new JwtUltility();
+	
 	@Override
 	public User saveUser(UserDTO u) {
 		
@@ -55,6 +62,7 @@ public class UserServicesImpl implements UserServices{
 		user.setUsername(u.getUsername());
 		user.setPassword(bcryptEncoder.encode(u.getPassword()));
 		user.setRoles(roles);
+		user.setStatus("Đang hoạt động");
 		System.out.println(user);
 		
 		return userRepository.save(user);
@@ -101,6 +109,12 @@ public class UserServicesImpl implements UserServices{
 	public Page<User> getAllUser_Paging(Pageable pageable) {
 		
 		return userRepository.findAll(pageable);
+	}
+
+	@Override
+	public User getCurrentAuthenticatedUser(String token) {
+		String username = jwtUltility.getUsernameFromToken(token);
+		return userRepository.findUserByUsername(username);
 	}
 
 

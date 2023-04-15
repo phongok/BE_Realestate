@@ -2,6 +2,8 @@ package com.se.service;
 
 
 
+import java.util.Optional;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -21,6 +23,9 @@ public interface UserServices {
 	
 	public Page<User> getAllUser_Paging(String keyword, Pageable pageable);
 	public Page<User> getAllUser_Paging( Pageable pageable);
+	
+	
+	User getCurrentAuthenticatedUser(String token);
 	
 	
 }

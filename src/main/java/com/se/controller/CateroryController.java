@@ -37,7 +37,7 @@ public class CateroryController {
 	@CrossOrigin(origins = "http://localhost:3000")
 	@PostMapping("caterorys")
 	public Category createCaterory(@RequestBody Category category) {
-		category.setAction(true);;
+		category.setStatus("Đang hoạt động");
 		cateroryService.saveCaterory(category);
 		return category;
 	}

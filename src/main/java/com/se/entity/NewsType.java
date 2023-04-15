@@ -22,7 +22,7 @@ public class NewsType {
 
 	private String name;
 
-	private boolean isAction;
+	private String status;
 
 	public long getId() {
 		return id;
@@ -48,20 +48,20 @@ public class NewsType {
 		this.name = name;
 	}
 
-	public boolean isAction() {
-		return isAction;
+	public String getStatus() {
+		return status;
 	}
 
-	public void setAction(boolean isAction) {
-		this.isAction = isAction;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
-	public NewsType(long id, Category category, String name, boolean isAction) {
+	public NewsType(long id, Category category, String name, String status) {
 		super();
 		this.id = id;
 		this.category = category;
 		this.name = name;
-		this.isAction = isAction;
+		this.status = status;
 	}
 
 	public NewsType() {
@@ -70,7 +70,8 @@ public class NewsType {
 
 	@Override
 	public String toString() {
-		return "BusinessType [id=" + id + ", category=" + category + ", name=" + name + ", isAction=" + isAction + "]";
+		return "NewsType [id=" + id + ", category=" + category + ", name=" + name + ", status=" + status + "]";
 	}
-
+	
+	
 }

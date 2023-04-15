@@ -57,6 +57,7 @@ public class RealEstate {
 
 	private String address; // địa chỉ
 
+	 @Column(name = "decription", columnDefinition = "TEXT")
 	private String decription; // mô tả
 
 	private String url_img1;

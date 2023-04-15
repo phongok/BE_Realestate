@@ -53,7 +53,7 @@ public class NewsTypeController {
 	@CrossOrigin(origins = "http://localhost:3000")
 	@PostMapping("newsTypes")
 	public NewsType createNewsType(@RequestBody NewsType newsType) {
-		newsType.setAction(true);
+		newsType.setStatus("Đang hoạt động");
 		newsTypeService.saveNewsType(newsType);
 		return newsType;
 	}

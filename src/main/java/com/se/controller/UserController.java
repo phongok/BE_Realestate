@@ -56,4 +56,12 @@ public class UserController {
 		 
 		 return pageuser;
 	}
+	
+	@CrossOrigin(origins = "http://localhost:3000")
+	@GetMapping("checkuser")
+	public User getUserLogin(@RequestParam String token) {
+		System.out.println("token = " +token);
+		return userServices.getCurrentAuthenticatedUser(token);
+	}
+	
 }
