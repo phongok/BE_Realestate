@@ -27,5 +27,7 @@ public interface UserServices {
 	
 	User getCurrentAuthenticatedUser(String token);
 	
+	void Deductmoneywhenposting(long id);
+	
 	
 }

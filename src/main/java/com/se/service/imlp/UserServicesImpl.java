@@ -63,6 +63,8 @@ public class UserServicesImpl implements UserServices{
 		user.setPassword(bcryptEncoder.encode(u.getPassword()));
 		user.setRoles(roles);
 		user.setStatus("Đang hoạt động");
+		user.setUrl("https://res.cloudinary.com/dps8mwvsi/image/upload/v1666187220/cld-sample-2.jpg");
+		user.setName(u.getUsername());
 		System.out.println(user);
 		
 		return userRepository.save(user);
@@ -115,6 +117,15 @@ public class UserServicesImpl implements UserServices{
 	public User getCurrentAuthenticatedUser(String token) {
 		String username = jwtUltility.getUsernameFromToken(token);
 		return userRepository.findUserByUsername(username);
+	}
+
+	@Override
+	public void Deductmoneywhenposting(long id) {
+		// TODO Auto-generated method stub
+		User user = userRepository.findById(id).get();
+		user.setSurplus(user.getSurplus()-100000);
+		userRepository.save(user);
+		
 	}
 
 
