@@ -28,6 +28,8 @@ import com.se.service.UserServices;
 
 import ch.qos.logback.classic.Logger;
 
+
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class UserController {
@@ -35,19 +37,19 @@ public class UserController {
 	@Autowired
 	private UserServices userServices;
 	
-	@CrossOrigin(origins = "http://localhost:3000")
+	
 	@GetMapping("users/{username}")
 	public User getUserByUserName(@PathVariable String username) {
 		
 		return userServices.getUserByUserName(username);
 	}
-	@CrossOrigin(origins = "http://localhost:3000")
+	
 	@GetMapping("users/count")
 	public String getAccountNumber() {
 		return userServices.getUserNumber()+"";
 	}
 	
-	@CrossOrigin(origins = "http://localhost:3000")
+	
 	@GetMapping("users-paging")
 	public Page<User> getAllUser_Paging(@RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size, @RequestParam String keyword) {
@@ -64,14 +66,14 @@ public class UserController {
 		 return pageuser;
 	}
 	
-	@CrossOrigin(origins = "http://localhost:3000")
+	
 	@GetMapping("checkuser")
 	public User getUserLogin(@RequestParam String token) {
 		System.out.println("token = " +token);
 		return userServices.getCurrentAuthenticatedUser(token);
 	}
 	
-	@CrossOrigin(origins = "http://localhost:3000")
+	
 	@PostMapping("deductmoneypost")
 	public void Deductmoneywhenpost(@RequestParam long idUser) {
 		

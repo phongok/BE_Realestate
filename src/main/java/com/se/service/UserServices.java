@@ -2,13 +2,13 @@ package com.se.service;
 
 
 
-import java.util.Optional;
+
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.se.dto.UserDTO;
-import com.se.entity.RealEstate;
+
 import com.se.entity.User;
 import com.se.entity.UserPrincipal;
 

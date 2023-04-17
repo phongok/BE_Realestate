@@ -18,6 +18,8 @@ import com.se.entity.NewsType;
 import com.se.entity.Category;
 import com.se.service.CateroryService;
 
+
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class CateroryController {
@@ -25,7 +27,7 @@ public class CateroryController {
 	private CateroryService cateroryService;
 	
 
-	@CrossOrigin(origins = "http://localhost:3000")
+	
 	@GetMapping("caterorys")
 	public  List<Category> listCaterory() {
 		List<Category> categories = cateroryService.getAllCaterory();
@@ -34,7 +36,7 @@ public class CateroryController {
 	}
 	
 	
-	@CrossOrigin(origins = "http://localhost:3000")
+	
 	@PostMapping("caterorys")
 	public Category createCaterory(@RequestBody Category category) {
 		category.setStatus("Đang hoạt động");
@@ -43,7 +45,7 @@ public class CateroryController {
 	}
 	
 	
-	@CrossOrigin(origins = "http://localhost:3000")
+	
 	@PutMapping("caterorys")
 	public Category updateCaterory(@RequestBody Category category) {
 		cateroryService.saveCaterory(category);
@@ -51,7 +53,7 @@ public class CateroryController {
 	}
 	
 	
-	@CrossOrigin(origins = "http://localhost:3000")
+	
 	@GetMapping("caterorys/{id}")
 	public Category findOneCaterory(@PathVariable long theid) {
 		Category category = cateroryService.getCaterory(theid);

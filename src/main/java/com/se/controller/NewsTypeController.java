@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.se.entity.NewsType;
 import com.se.service.NewsTypeService;
 
-
+@CrossOrigin
 @RequestMapping("/api")
 @RestController
 public class NewsTypeController {
@@ -29,14 +29,14 @@ public class NewsTypeController {
 
 	
 	
-	@CrossOrigin(origins = "http://localhost:3000")
+
 	@GetMapping("newsTypesSell/listSell")
 	public  List<NewsType> ListNewsTypeSell() {
 		return newsTypeService.getAllNewsTypeSell();
 	}
 	
 	
-	@CrossOrigin(origins = "http://localhost:3000")
+
 	@GetMapping("newsTypesRent/listRent")
 	public  List<NewsType> ListNewsTypeRent() {
 		return newsTypeService.getAllNewsTypeRent();
@@ -45,31 +45,31 @@ public class NewsTypeController {
 
 	
 	
-	@CrossOrigin(origins = "http://localhost:3000")
+	
 	@GetMapping("newsTypes/{id}")
 	public NewsType getNewsTypeById(long theId) {
 		return newsTypeService.getNewsTypeById(theId);
 	}
-	@CrossOrigin(origins = "http://localhost:3000")
+	
 	@PostMapping("newsTypes")
 	public NewsType createNewsType(@RequestBody NewsType newsType) {
 		newsType.setStatus("Đang hoạt động");
 		newsTypeService.saveNewsType(newsType);
 		return newsType;
 	}
-	@CrossOrigin(origins = "http://localhost:3000")
+	
 	@PutMapping("newsTypes")
 	public NewsType updateNewsType(@RequestBody NewsType newsType) {
 		newsTypeService.saveNewsType(newsType);
 		return newsType;
 	}
 
-	@CrossOrigin(origins = "http://localhost:3000")
+	
 	@GetMapping("newsTypes/count")
 	public String getNewsStateNumber() {
 		return newsTypeService.getNewsTypeNumber()+"";
 	}
-	@CrossOrigin(origins = "http://localhost:3000")
+	
 	@GetMapping("newsType-paging")
 	public Page<NewsType> getAllNewsPagePaging(@RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size, @RequestParam String keyword) {

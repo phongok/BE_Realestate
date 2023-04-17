@@ -57,14 +57,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 						"/api/caterorys/{id}", "/api/newsTypes", "/api/newsTypes/count", "/api/newsType-paging",
 						"/api/newsTypesSell/listSell", "/api/newsTypesRent/listRent", "/api/realestates",
 						"/api/realestates-paging", "/api/realestates/{id}", "/api/realestates/count",
-						"/api/listrealestateSell", "/api/listrealestateRent", "/api/realestates-user/{id_user}", "/api/realestates-newstype/{id_newstype}")
+						"/api/listrealestateSell", "/api/listrealestateRent", "/api/realestates-user/{id_user}", "/api/realestates-newstype/{id_newstype}", "/api/bills")
 				.permitAll().anyRequest().authenticated().and().exceptionHandling()
 				.authenticationEntryPoint(authenticationEntryPoint).and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 //        http.exceptionHandling().accessDeniedHandler(new CustomAccessDeniedHandler()).and()
 //        .exceptionHandling().authenticationEntryPoint(new CustomHttp403ForbiddenEntryPoint());
 		
-//		http.cors().and().csrf().disable();
+//		
 
 		http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 	}

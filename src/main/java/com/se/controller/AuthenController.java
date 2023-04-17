@@ -23,6 +23,8 @@ import com.se.service.TokenServices;
 import com.se.service.UserServices;
 import com.se.util.JwtUltility;
 
+
+@CrossOrigin
 @org.springframework.web.bind.annotation.RestController
 @RequestMapping("/authen")
 public class AuthenController {
@@ -45,20 +47,20 @@ public class AuthenController {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
-	@CrossOrigin(origins = "http://localhost:3000")
+	
 	@GetMapping("/hello")
 	public String helloWorld() {
 		return "Hello World";
 	}
 	
-	@CrossOrigin(origins = "http://localhost:3000")
+	
 	@PostMapping("/register")
 	public User registerUser(@RequestBody UserDTO u) {
 		return userServices.saveUser(u);
 	}
 	
 	
-	@CrossOrigin(origins = "http://localhost:3000")
+	
 	@PostMapping("/login")
 	public ResponseEntity<?> signInUser(@RequestBody UserDTO u){
 		
@@ -89,7 +91,7 @@ public class AuthenController {
 	}
 	
 	
-	@CrossOrigin(origins = "http://localhost:3000")
+	
 	@GetMapping("/signout")
 	public String signOut() {
 		SecurityContextHolder.getContext();
