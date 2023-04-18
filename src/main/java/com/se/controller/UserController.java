@@ -66,6 +66,23 @@ public class UserController {
 		 return pageuser;
 	}
 	
+
+	@GetMapping("users-lock")
+	public Page<User> getAllUser_Lock(@RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size, @RequestParam String keyword) {
+		 Pageable pageable = PageRequest.of(page, size);
+		 Page<User> pageuser  = null; 
+		 System.out.println("kw = "+keyword);
+		if (keyword.equalsIgnoreCase("") == false) {
+			 pageuser = userServices.getAllUserLock(keyword, pageable);
+		} else {
+			System.out.println("tjh2");
+			pageuser = userServices.getAllUserLock(pageable);
+		}
+		 
+		 return pageuser;
+	}
+	
 	
 	@GetMapping("checkuser")
 	public User getUserLogin(@RequestParam String token) {

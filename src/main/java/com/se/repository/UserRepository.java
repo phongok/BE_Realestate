@@ -20,8 +20,19 @@ public interface UserRepository extends PagingAndSortingRepository<User, Long> {
 
 	@Query(value = "select count(*) from realestatedb.user ", nativeQuery = true)
 	public int getCountUser();
+	
+	@Query(value = "SELECT * FROM realestatedb.user WHERE status =\"Đang hoạt động\" ", nativeQuery = true)
+	public Page<User> getUserActive( Pageable pageable);
 
-	@Query(value = "SELECT * FROM realestatedb.user WHERE name LIKE %?1% OR username LIKE %?1% OR phonenumber LIKE %?1% ", nativeQuery = true)
-	public Page<User> findAll( String keyword , Pageable pageable);
+	@Query(value = "SELECT * FROM realestatedb.user WHERE name LIKE %?1% OR username LIKE %?1% OR phonenumber LIKE %?1% and status =\"Đang hoạt động\" ", nativeQuery = true)
+	public Page<User> getUserActive( String keyword , Pageable pageable);
+	
+	@Query(value = "SELECT * FROM realestatedb.user where status =\"Đã khóa\"", nativeQuery = true)
+	public Page<User> getUserLock(Pageable pageable);
+	
+	@Query(value = "SELECT * FROM realestatedb.user WHERE name LIKE %?1% OR username LIKE %?1% OR phonenumber LIKE %?1% and status =\"Đã khóa\" ", nativeQuery = true)
+	public Page<User> getUserLock(String keyword, Pageable pageable );
+	
+	
 
 }

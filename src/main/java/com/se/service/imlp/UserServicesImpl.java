@@ -104,13 +104,13 @@ public class UserServicesImpl implements UserServices{
 
 	@Override
 	public Page<User> getAllUser_Paging(String keyword, Pageable pageable) {
-		return userRepository.findAll(keyword, pageable);
+		return userRepository.getUserActive(keyword, pageable);
 	}
 
 	@Override
 	public Page<User> getAllUser_Paging(Pageable pageable) {
 		
-		return userRepository.findAll(pageable);
+		return userRepository.getUserActive(pageable);
 	}
 
 	@Override
@@ -126,6 +126,18 @@ public class UserServicesImpl implements UserServices{
 		user.setSurplus(user.getSurplus()-100000);
 		userRepository.save(user);
 		
+	}
+
+	@Override
+	public Page<User> getAllUserLock(String keyword, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return userRepository.getUserLock(keyword, pageable);
+	}
+
+	@Override
+	public Page<User> getAllUserLock(Pageable pageable) {
+		// TODO Auto-generated method stub
+		return userRepository.getUserLock(pageable);
 	}
 
 
