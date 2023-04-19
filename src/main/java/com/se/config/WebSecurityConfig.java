@@ -53,21 +53,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().authorizeRequests()
 				.antMatchers("/authen/register", "/authen/login", "/authen/hello", "/authen/signout", "/api/checkuser",
-						"/api/users/{username}", "/api/users-paging", "/api/users-lock", "/api/userscount",
+						"/api/users/{username}", "/api/users-paging", "/api/users-lock","/api/unlockuser", "/api/userscount",
 						"/api/deductmoneypost", "/api/caterorys", "/api/caterorys/{id}", "/api/newsTypes",
 						"/api/newsTypes/count", "/api/newsType-paging", "/api/newsTypesSell/listSell",
 						"/api/newsTypesRent/listRent", "/api/realestates", "/api/realestates-paging",
 						"/api/realestates/{id}", "/api/realestates/count", "/api/listrealestateSell",
 						"/api/listrealestateRent", "/api/realestates-user/{id_user}",
-						"/api/realestates-newstype/{id_newstype}", "/api/bills", "/api/bills-paging")
+						"/api/realestates-newstype/{id_newstype}", "/api/bills", "/api/bills-paging","/api/getRevenue", "/api/reports-paging")
+				
 				.permitAll().anyRequest().authenticated().and().exceptionHandling()
 				.authenticationEntryPoint(authenticationEntryPoint).and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 //        http.exceptionHandling().accessDeniedHandler(new CustomAccessDeniedHandler()).and()
 //        .exceptionHandling().authenticationEntryPoint(new CustomHttp403ForbiddenEntryPoint());
 
-//		
-
+		
 		http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 	}
 }

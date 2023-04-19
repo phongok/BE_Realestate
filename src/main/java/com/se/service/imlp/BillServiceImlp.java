@@ -44,4 +44,10 @@ public class BillServiceImlp implements BillService {
 		return billRepository.getBillFromTo(from, to, pageable);
 	}
 
+	@Override
+	public String getrevenue() {
+		// TODO Auto-generated method stub
+		return billRepository.getSumBILL();
+	}
+
 }

@@ -68,5 +68,11 @@ public class BillController {
 		 
 		 return pagebill;
 	}
+	
+	
+	@GetMapping("getRevenue")
+	public String getRevenue() {
+		return billService.getrevenue();
+	}
 
 }

@@ -140,6 +140,15 @@ public class UserServicesImpl implements UserServices{
 		return userRepository.getUserLock(pageable);
 	}
 
+	@Override
+	public User unlockUser(long id) {
+		// TODO Auto-generated method stub
+		User user = userRepository.findById(id).get();
+		user.setStatus("Đang hoạt động");
+		userRepository.save(user);
+		return user;
+	}
+
 
 
 	

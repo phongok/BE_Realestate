@@ -14,4 +14,6 @@ public interface BillService {
 	
 	public Page<Bill> getBillAll(Pageable pageable);
 	public Page<Bill> getBillFromTo(Date from, Date to, Pageable pageable );
+	
+	public String getrevenue() ;
 }

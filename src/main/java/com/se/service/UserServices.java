@@ -33,6 +33,8 @@ public interface UserServices {
 	public Page<User> getAllUserLock(String keyword, Pageable pageable);
 	public Page<User> getAllUserLock( Pageable pageable);
 	
+	public User unlockUser(long id);
+	
 	
 	
 }

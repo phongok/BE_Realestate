@@ -2,18 +2,12 @@ package com.se.controller;
 
 
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
 
-import org.apache.commons.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.repository.query.Param;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,7 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.se.entity.User;
 import com.se.service.UserServices;
 
-import ch.qos.logback.classic.Logger;
 
 
 @CrossOrigin
@@ -95,6 +88,13 @@ public class UserController {
 	public void Deductmoneywhenpost(@RequestParam long idUser) {
 		
 		userServices.Deductmoneywhenposting(idUser);
+	}
+	
+	
+
+	@PutMapping("unlockuser")
+	public User unlockUser(@RequestParam long userid) {
+		return userServices.unlockUser(userid);
 	}
 	
 }
