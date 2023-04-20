@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.se.entity.NewsType;
 import com.se.entity.Report;
+import com.se.entity.User;
 import com.se.service.ReportService;
 
 @CrossOrigin
@@ -38,5 +39,16 @@ public class ReportController {
 		
 		
 		 return reportService.getReport_Paging(pageable);
+	}
+	
+	@GetMapping("findReportByID")
+	public Report getReportById(@RequestParam long id) {
+		System.out.println("id = "+id);
+		return reportService.getReportById(id);
+	}
+	
+	@PostMapping("stickreport")
+	public Report StickReport(@RequestParam long reportid) {
+		return reportService.StickReport(reportid);
 	}
 }

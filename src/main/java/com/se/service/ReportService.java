@@ -11,4 +11,9 @@ public interface ReportService {
 	public Report saveReport(Report report) ;
 	public Page<Report> getReport_Paging(Pageable pageable);
 	
+	
+	public Report StickReport(long id) ;
+	
+	public Report getReportById(long id) ;
+	
 }

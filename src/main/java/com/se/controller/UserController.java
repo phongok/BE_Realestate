@@ -1,8 +1,5 @@
 package com.se.controller;
 
-
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.se.entity.User;
 import com.se.service.UserServices;
-
 
 
 @CrossOrigin
@@ -91,8 +87,8 @@ public class UserController {
 	}
 	
 	
-
-	@PutMapping("unlockuser")
+	
+	@PostMapping("unlockuser")
 	public User unlockUser(@RequestParam long userid) {
 		return userServices.unlockUser(userid);
 	}
