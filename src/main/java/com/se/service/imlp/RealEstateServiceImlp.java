@@ -16,13 +16,11 @@ import com.se.entity.User;
 import com.se.repository.RealEstateRepository;
 import com.se.service.RealEstateService;
 
-
 @Service
 public class RealEstateServiceImlp implements RealEstateService {
 	@Autowired
 	private RealEstateRepository realEstateRepository;
-	
-	
+
 	@Override
 	public List<RealEstate> getAllHome() {
 		// TODO Auto-generated method stub
@@ -32,13 +30,12 @@ public class RealEstateServiceImlp implements RealEstateService {
 	@Override
 	public RealEstate getHomeById(long id) {
 		// TODO Auto-generated method stub
-		Optional<RealEstate> result =  realEstateRepository.findById(id);
+		Optional<RealEstate> result = realEstateRepository.findById(id);
 		RealEstate home = null;
 		if (result.isPresent()) {
 			home = result.get();
-		}
-		else {
-			throw new RuntimeException("Did not find home id = "+id);
+		} else {
+			throw new RuntimeException("Did not find home id = " + id);
 		}
 		return home;
 	}
@@ -46,16 +43,16 @@ public class RealEstateServiceImlp implements RealEstateService {
 	@Override
 	public void saveHome(RealEstate home) {
 		// TODO Auto-generated method stub
-		
+
 		realEstateRepository.save(home);
-		
+
 	}
 
 	@Override
 	public void deleteById(long id) {
 		// TODO Auto-generated method stub
 		realEstateRepository.deleteById(id);
-		
+
 	}
 
 	@Override
@@ -83,7 +80,7 @@ public class RealEstateServiceImlp implements RealEstateService {
 	}
 
 	@Override
-	public Page<RealEstate> getRealStateByUserID(long iduser , Pageable pageable) {
+	public Page<RealEstate> getRealStateByUserID(long iduser, Pageable pageable) {
 		// TODO Auto-generated method stub
 		return realEstateRepository.getRealStateByUserId(iduser, pageable);
 	}
@@ -94,7 +91,22 @@ public class RealEstateServiceImlp implements RealEstateService {
 		return realEstateRepository.getRealStateByNewsTypeID(idNews, pageable);
 	}
 
-	
-	
-	
+	@Override
+	public Page<RealEstate> getRealStateArea(String area, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return realEstateRepository.getRentFTArea(area, pageable);
+	}
+
+	@Override
+	public Page<RealEstate> getRealStatePrice(long min, long max, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return realEstateRepository.getRentFTPrice(min, max, pageable);
+	}
+
+	@Override
+	public Page<RealEstate> getRealStateAcreage(float min, float max, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return realEstateRepository.getRentFTAcreage(min, max, pageable);
+	}
+
 }

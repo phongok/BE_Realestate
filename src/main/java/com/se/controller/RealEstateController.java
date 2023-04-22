@@ -20,94 +20,110 @@ import org.springframework.web.bind.annotation.RestController;
 import com.se.entity.RealEstate;
 import com.se.service.RealEstateService;
 
-
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class RealEstateController {
 	@Autowired
 	private RealEstateService realEstateService;
-	
 
 	@PostMapping("realestates")
 	public RealEstate createHome(@RequestBody RealEstate home) {
 		realEstateService.saveHome(home);
 		return home;
 	}
-	
+
 	@PutMapping("realestates")
 	public RealEstate updateHome(@RequestBody RealEstate home) {
 		realEstateService.saveHome(home);
 		return home;
 	}
-	
+
 	@GetMapping("realestates")
 	public List<RealEstate> listHome() {
 		return realEstateService.getAllHome();
 	}
-	
+
 	@GetMapping("realestates/{id}")
 	public RealEstate getHomeById(@PathVariable long id) {
-		
+
 		return realEstateService.getHomeById(id);
-		
+
 	}
-	
-	
+
 	@DeleteMapping("realestates/{id}")
 	public String deleteHome(@PathVariable long id) {
 		RealEstate home = realEstateService.getHomeById(id);
-		if (home==null) {
-			throw new RuntimeException("Did not found home id = "+id);
+		if (home == null) {
+			throw new RuntimeException("Did not found home id = " + id);
 		}
 		realEstateService.deleteById(id);
-		return "Delete home id = "+ id;
+		return "Delete home id = " + id;
 	}
-	
-	
+
 	@GetMapping("listrealestateSell")
-	public Page<RealEstate> listHomeSell( @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "1") int size) {
-		 Pageable pageable = PageRequest.of(page, size);
+	public Page<RealEstate> listHomeSell(@RequestParam(defaultValue = "0") int page,
+			@RequestParam(defaultValue = "1") int size) {
+		Pageable pageable = PageRequest.of(page, size);
+
 		return realEstateService.getHome_Sell(pageable);
 	}
-	
-	
+
 	@GetMapping("listrealestateRent")
-	public Page<RealEstate> listHomeRent( @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "1") int size) {
-		 Pageable pageable = PageRequest.of(page, size);
+	public Page<RealEstate> listHomeRent(@RequestParam(defaultValue = "0") int page,
+			@RequestParam(defaultValue = "1") int size, @RequestParam(defaultValue = "") String area,
+			@RequestParam(defaultValue = "0") long priceMin, @RequestParam(defaultValue = "0") long priceMax,
+			@RequestParam(defaultValue = "0") float acreageMin, @RequestParam(defaultValue = "0") float acreageMax) {
+		Pageable pageable = PageRequest.of(page, size);
+		Page<RealEstate> pageRealEstate = null;
+		if (area.equalsIgnoreCase("") == false || priceMin>0 || priceMax >0 || acreageMin>0 || acreageMax>0) {
+			
+			if (priceMin==0 && priceMax == 0 && acreageMin==0 && acreageMax==0) {
+				return realEstateService.getRealStateArea(area, pageable);
+			}
+			else if (area.equalsIgnoreCase("") && acreageMin==0 && acreageMax==0) {
+				System.out.println("Thuc hien 1 minh price");
+				return realEstateService.getRealStatePrice(priceMin, priceMax, pageable);
+			}
+			else if (area.equalsIgnoreCase("") && priceMin==0 && priceMax==0) {
+				System.out.println(acreageMin);
+				System.out.println(acreageMax);
+				System.out.println("Thuc hien 1 minh acreage");
+				return realEstateService.getRealStateAcreage(acreageMin, acreageMax, pageable);
+			}
+			
+		}else {
+			return realEstateService.getHome_Rent(pageable);
+		}
+		
+		
 		return realEstateService.getHome_Rent(pageable);
 	}
-	
-	
+
 	@GetMapping("realestates/count")
 	public String getAccountNumber() {
-		return realEstateService.getRealEstateNumber()+"";
+		return realEstateService.getRealEstateNumber() + "";
 	}
-	
+
 	@GetMapping("realestates-paging")
 	public Page<RealEstate> getAllRealState_Paging(@RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size) {
-		 Pageable pageable = PageRequest.of(page, size);
-		 return realEstateService.getAllRealState_Paging(pageable);
+			@RequestParam(defaultValue = "10") int size) {
+		Pageable pageable = PageRequest.of(page, size);
+		return realEstateService.getAllRealState_Paging(pageable);
 	}
-	
-	
 
 	@GetMapping("realestates-user/{id_user}")
 	public Page<RealEstate> getRealStateByIdUser(@PathVariable long id_user, @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "12") int size) {
-		 Pageable pageable = PageRequest.of(page, size);
+			@RequestParam(defaultValue = "12") int size) {
+		Pageable pageable = PageRequest.of(page, size);
 		return realEstateService.getRealStateByUserID(id_user, pageable);
 	}
-	
-	
+
 	@GetMapping("realestates-newstype/{id_newstype}")
-	public Page<RealEstate> getRealStateByIdNewsType(@PathVariable long id_newstype, @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "12") int size) {
-		 Pageable pageable = PageRequest.of(page, size);
+	public Page<RealEstate> getRealStateByIdNewsType(@PathVariable long id_newstype,
+			@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "12") int size) {
+		Pageable pageable = PageRequest.of(page, size);
 		return realEstateService.getRealStateByNewsTypeID(id_newstype, pageable);
 	}
-	
+
 }

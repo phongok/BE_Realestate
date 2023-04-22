@@ -26,4 +26,12 @@ public interface RealEstateService {
 	public Page<RealEstate> getRealStateByUserID(long iduser, Pageable pageable) ;
 	
 	public Page<RealEstate> getRealStateByNewsTypeID(long idNews, Pageable pageable) ;
+	
+	
+	
+	
+	public Page<RealEstate> getRealStateArea(String area, Pageable pageable) ;
+	public Page<RealEstate> getRealStatePrice(long min, long max, Pageable pageable) ;
+	public Page<RealEstate> getRealStateAcreage(float min, float max, Pageable pageable) ;
+	
 }

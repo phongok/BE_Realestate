@@ -46,8 +46,10 @@ public class RealEstate {
 	private float width; // chiều rộng
 
 	private float acreage; // diện tích
+	
+	private String area;
 
-	private String price; // giá
+	private long price; // giá
 
 	@Column(name = "date_submitted")
 	@Temporal(TemporalType.DATE)
@@ -66,162 +68,130 @@ public class RealEstate {
 	private String url_img4;
 	private String url_img5;
 	private String url_img6;
-
 	public long getId() {
 		return id;
 	}
-
 	public void setId(long id) {
 		this.id = id;
 	}
-
 	public Category getCategory() {
 		return category;
 	}
-
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-
 	public NewsType getNewsType() {
 		return newsType;
 	}
-
 	public void setNewsType(NewsType newsType) {
 		this.newsType = newsType;
 	}
-
 	public User getUser() {
 		return user;
 	}
-
 	public void setUser(User user) {
 		this.user = user;
 	}
-
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
 	public float getLength() {
 		return length;
 	}
-
 	public void setLength(float length) {
 		this.length = length;
 	}
-
 	public float getWidth() {
 		return width;
 	}
-
 	public void setWidth(float width) {
 		this.width = width;
 	}
-
 	public float getAcreage() {
 		return acreage;
 	}
-
 	public void setAcreage(float acreage) {
 		this.acreage = acreage;
 	}
-
-	public String getPrice() {
+	public String getArea() {
+		return area;
+	}
+	public void setArea(String area) {
+		this.area = area;
+	}
+	public long getPrice() {
 		return price;
 	}
-
-	public void setPrice(String price) {
+	public void setPrice(long price) {
 		this.price = price;
 	}
-
 	public Date getDateSubmitted() {
 		return dateSubmitted;
 	}
-
 	public void setDateSubmitted(Date dateSubmitted) {
 		this.dateSubmitted = dateSubmitted;
 	}
-
 	public String getStatus() {
 		return status;
 	}
-
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
 	public String getAddress() {
 		return address;
 	}
-
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
 	public String getDecription() {
 		return decription;
 	}
-
 	public void setDecription(String decription) {
 		this.decription = decription;
 	}
-
 	public String getUrl_img1() {
 		return url_img1;
 	}
-
 	public void setUrl_img1(String url_img1) {
 		this.url_img1 = url_img1;
 	}
-
 	public String getUrl_img2() {
 		return url_img2;
 	}
-
 	public void setUrl_img2(String url_img2) {
 		this.url_img2 = url_img2;
 	}
-
 	public String getUrl_img3() {
 		return url_img3;
 	}
-
 	public void setUrl_img3(String url_img3) {
 		this.url_img3 = url_img3;
 	}
-
 	public String getUrl_img4() {
 		return url_img4;
 	}
-
 	public void setUrl_img4(String url_img4) {
 		this.url_img4 = url_img4;
 	}
-
 	public String getUrl_img5() {
 		return url_img5;
 	}
-
 	public void setUrl_img5(String url_img5) {
 		this.url_img5 = url_img5;
 	}
-
 	public String getUrl_img6() {
 		return url_img6;
 	}
-
 	public void setUrl_img6(String url_img6) {
 		this.url_img6 = url_img6;
 	}
-
 	public RealEstate(long id, Category category, NewsType newsType, User user, String name, float length, float width,
-			float acreage, String price, Date dateSubmitted, String status, String address, String decription,
-			String url_img1, String url_img2, String url_img3, String url_img4, String url_img5, String url_img6) {
+			float acreage, String area, long price, Date dateSubmitted, String status, String address,
+			String decription, String url_img1, String url_img2, String url_img3, String url_img4, String url_img5,
+			String url_img6) {
 		super();
 		this.id = id;
 		this.category = category;
@@ -231,6 +201,7 @@ public class RealEstate {
 		this.length = length;
 		this.width = width;
 		this.acreage = acreage;
+		this.area = area;
 		this.price = price;
 		this.dateSubmitted = dateSubmitted;
 		this.status = status;
@@ -243,18 +214,22 @@ public class RealEstate {
 		this.url_img5 = url_img5;
 		this.url_img6 = url_img6;
 	}
-
 	public RealEstate() {
 		super();
 	}
-
 	@Override
 	public String toString() {
 		return "RealEstate [id=" + id + ", category=" + category + ", newsType=" + newsType + ", user=" + user
-				+ ", name=" + name + ", length=" + length + ", width=" + width + ", acreage=" + acreage + ", price="
-				+ price + ", dateSubmitted=" + dateSubmitted + ", status=" + status + ", address=" + address
-				+ ", decription=" + decription + ", url_img1=" + url_img1 + ", url_img2=" + url_img2 + ", url_img3="
-				+ url_img3 + ", url_img4=" + url_img4 + ", url_img5=" + url_img5 + ", url_img6=" + url_img6 + "]";
+				+ ", name=" + name + ", length=" + length + ", width=" + width + ", acreage=" + acreage + ", area="
+				+ area + ", price=" + price + ", dateSubmitted=" + dateSubmitted + ", status=" + status + ", address="
+				+ address + ", decription=" + decription + ", url_img1=" + url_img1 + ", url_img2=" + url_img2
+				+ ", url_img3=" + url_img3 + ", url_img4=" + url_img4 + ", url_img5=" + url_img5 + ", url_img6="
+				+ url_img6 + "]";
 	}
+	
+	
+	
+
+	
 
 }
