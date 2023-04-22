@@ -63,9 +63,48 @@ public class RealEstateController {
 
 	@GetMapping("listrealestateSell")
 	public Page<RealEstate> listHomeSell(@RequestParam(defaultValue = "0") int page,
-			@RequestParam(defaultValue = "1") int size) {
+			@RequestParam(defaultValue = "1") int size, @RequestParam(defaultValue = "") String area,
+			@RequestParam(defaultValue = "0") long priceMin, @RequestParam(defaultValue = "0") long priceMax,
+			@RequestParam(defaultValue = "0") float acreageMin, @RequestParam(defaultValue = "0") float acreageMax) {
 		Pageable pageable = PageRequest.of(page, size);
-
+		Page<RealEstate> pageRealEstate = null;
+		if (area.equalsIgnoreCase("") == false || priceMin>0 || priceMax >0 || acreageMin>0 || acreageMax>0) {
+			
+			if (priceMin==0 && priceMax == 0 && acreageMin==0 && acreageMax==0) {
+				return realEstateService.getRealStateSellArea(area, pageable);
+			}
+			else if (area.equalsIgnoreCase("") && acreageMin==0 && acreageMax==0) {
+				System.out.println("Thuc hien 1 minh price");
+				return realEstateService.getRealStateSellPrice(priceMin, priceMax, pageable);
+			}
+			else if (area.equalsIgnoreCase("") && priceMin==0 && priceMax==0) {
+				System.out.println(acreageMin);
+				System.out.println(acreageMax);
+				System.out.println("Thuc hien 1 minh acreage");
+				return realEstateService.getRealStateSellAcreage(acreageMin, acreageMax, pageable);
+			}
+			else if (acreageMin==0 && acreageMax==0) {
+				System.out.println("thuc hien price area");
+				return realEstateService.getRealStateSellAreaPrice(area, priceMin, priceMax, pageable);
+			}
+			else if (priceMin == 0 && priceMax==0) {
+				System.out.println("thuc hien acreage area");
+				return realEstateService.getRealStateSellAreaAcreage(area, acreageMin, acreageMax, pageable);
+				
+			}
+			else if (area.equalsIgnoreCase("")==true) {
+				System.out.println("thuc hien acreage price");
+				return realEstateService.getRealStateSellPriceAcreage(priceMin, priceMax, acreageMin, acreageMax, pageable);
+			}
+			else if (area.equalsIgnoreCase("") == false && priceMin>0 && priceMax >0 && acreageMin>0 && acreageMax>0) {
+				return realEstateService.getRealStateSellAreaPriceAcreage(area, priceMin, priceMax, acreageMin, acreageMax, pageable);
+			}
+			
+		}
+		
+		
+		
+		System.out.println("thuc hien tong");
 		return realEstateService.getHome_Sell(pageable);
 	}
 
@@ -79,24 +118,40 @@ public class RealEstateController {
 		if (area.equalsIgnoreCase("") == false || priceMin>0 || priceMax >0 || acreageMin>0 || acreageMax>0) {
 			
 			if (priceMin==0 && priceMax == 0 && acreageMin==0 && acreageMax==0) {
-				return realEstateService.getRealStateArea(area, pageable);
+				return realEstateService.getRealStateRentArea(area, pageable);
 			}
 			else if (area.equalsIgnoreCase("") && acreageMin==0 && acreageMax==0) {
 				System.out.println("Thuc hien 1 minh price");
-				return realEstateService.getRealStatePrice(priceMin, priceMax, pageable);
+				return realEstateService.getRealStateRentPrice(priceMin, priceMax, pageable);
 			}
 			else if (area.equalsIgnoreCase("") && priceMin==0 && priceMax==0) {
 				System.out.println(acreageMin);
 				System.out.println(acreageMax);
 				System.out.println("Thuc hien 1 minh acreage");
-				return realEstateService.getRealStateAcreage(acreageMin, acreageMax, pageable);
+				return realEstateService.getRealStateRentAcreage(acreageMin, acreageMax, pageable);
+			}
+			else if (acreageMin==0 && acreageMax==0) {
+				System.out.println("thuc hien price area");
+				return realEstateService.getRealStateRentAreaPrice(area, priceMin, priceMax, pageable);
+			}
+			else if (priceMin == 0 && priceMax==0) {
+				System.out.println("thuc hien acreage area");
+				return realEstateService.getRealStateRentAreaAcreage(area, acreageMin, acreageMax, pageable);
+				
+			}
+			else if (area.equalsIgnoreCase("")==true) {
+				System.out.println("thuc hien acreage price");
+				return realEstateService.getRealStateRentPriceAcreage(priceMin, priceMax, acreageMin, acreageMax, pageable);
+			}
+			else if (area.equalsIgnoreCase("") == false && priceMin>0 && priceMax >0 && acreageMin>0 && acreageMax>0) {
+				return realEstateService.getRealStateRentAreaPriceAcreage(area, priceMin, priceMax, acreageMin, acreageMax, pageable);
 			}
 			
-		}else {
-			return realEstateService.getHome_Rent(pageable);
 		}
 		
 		
+		
+		System.out.println("thuc hien tong");
 		return realEstateService.getHome_Rent(pageable);
 	}
 

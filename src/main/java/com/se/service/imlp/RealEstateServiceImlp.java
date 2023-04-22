@@ -90,23 +90,107 @@ public class RealEstateServiceImlp implements RealEstateService {
 		// TODO Auto-generated method stub
 		return realEstateRepository.getRealStateByNewsTypeID(idNews, pageable);
 	}
+	
+	
+	
+	
+	//////////////////
 
 	@Override
-	public Page<RealEstate> getRealStateArea(String area, Pageable pageable) {
+	public Page<RealEstate> getRealStateRentArea(String area, Pageable pageable) {
 		// TODO Auto-generated method stub
 		return realEstateRepository.getRentFTArea(area, pageable);
 	}
 
 	@Override
-	public Page<RealEstate> getRealStatePrice(long min, long max, Pageable pageable) {
+	public Page<RealEstate> getRealStateRentPrice(long min, long max, Pageable pageable) {
 		// TODO Auto-generated method stub
 		return realEstateRepository.getRentFTPrice(min, max, pageable);
 	}
 
 	@Override
-	public Page<RealEstate> getRealStateAcreage(float min, float max, Pageable pageable) {
+	public Page<RealEstate> getRealStateRentAcreage(float min, float max, Pageable pageable) {
 		// TODO Auto-generated method stub
 		return realEstateRepository.getRentFTAcreage(min, max, pageable);
 	}
+
+	@Override
+	public Page<RealEstate> getRealStateRentAreaPrice(String area, long min, long max, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return realEstateRepository.getRentFTAreaPrice(area, min, max, pageable);
+	}
+
+	@Override
+	public Page<RealEstate> getRealStateRentAreaAcreage(String area, float min, float max, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return realEstateRepository.getRentFTAreaAcreage(area, min, max, pageable);
+	}
+
+	@Override
+	public Page<RealEstate> getRealStateRentPriceAcreage(long minprice, long maxprice, float min, float max,
+			Pageable pageable) {
+		// TODO Auto-generated method stub
+		return realEstateRepository.getRentFTPriceAcreage(minprice, maxprice, min, max, pageable);
+	}
+
+	@Override
+	public Page<RealEstate> getRealStateRentAreaPriceAcreage(String area, long minprice, long maxprice, float min,
+			float max, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return realEstateRepository.getRentFTAreaPriceAcreage(area, minprice, maxprice, min, max, pageable);
+	}
+
+	
+
+////////////////
+	
+	
+	@Override
+	public Page<RealEstate> getRealStateSellArea(String area, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return realEstateRepository.getSellFTArea(area, pageable);
+	}
+
+	@Override
+	public Page<RealEstate> getRealStateSellPrice(long min, long max, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return realEstateRepository.getSellFTPrice(min, max, pageable);
+	}
+
+	@Override
+	public Page<RealEstate> getRealStateSellAcreage(float min, float max, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return realEstateRepository.getSellFTAcreage(min, max, pageable);
+	}
+
+	@Override
+	public Page<RealEstate> getRealStateSellAreaPrice(String area, long min, long max, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return realEstateRepository.getSellFTAreaPrice(area, min, max, pageable);
+	}
+
+	@Override
+	public Page<RealEstate> getRealStateSellAreaAcreage(String area, float min, float max, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return realEstateRepository.getSellFTAreaAcreage(area, min, max, pageable);
+	}
+
+	@Override
+	public Page<RealEstate> getRealStateSellPriceAcreage(long minprice, long maxprice, float min, float max,
+			Pageable pageable) {
+		// TODO Auto-generated method stub
+		return realEstateRepository.getSellFTPriceAcreage(minprice, maxprice, min, max, pageable);
+	}
+
+	@Override
+	public Page<RealEstate> getRealStateSellAreaPriceAcreage(String area, long minprice, long maxprice, float min,
+			float max, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return realEstateRepository.getSellFTAreaPriceAcreage(area, minprice, maxprice, min, max, pageable);
+	}
+	
+	
+	
+	
 
 }

@@ -30,8 +30,24 @@ public interface RealEstateService {
 	
 	
 	
-	public Page<RealEstate> getRealStateArea(String area, Pageable pageable) ;
-	public Page<RealEstate> getRealStatePrice(long min, long max, Pageable pageable) ;
-	public Page<RealEstate> getRealStateAcreage(float min, float max, Pageable pageable) ;
+	public Page<RealEstate> getRealStateRentArea(String area, Pageable pageable) ;
+	public Page<RealEstate> getRealStateRentPrice(long min, long max, Pageable pageable) ;
+	public Page<RealEstate> getRealStateRentAcreage(float min, float max, Pageable pageable) ;
+	
+	public Page<RealEstate> getRealStateRentAreaPrice(String area,long min, long max, Pageable pageable) ;
+	public Page<RealEstate> getRealStateRentAreaAcreage(String area,float min, float max, Pageable pageable) ;
+	public Page<RealEstate> getRealStateRentPriceAcreage(long minprice, long maxprice, float min, float max,Pageable pageable) ;
+	public Page<RealEstate> getRealStateRentAreaPriceAcreage(String area ,long minprice, long maxprice, float min, float max,Pageable pageable) ;
+	
+	/////////////////
+	
+	public Page<RealEstate> getRealStateSellArea(String area, Pageable pageable) ;
+	public Page<RealEstate> getRealStateSellPrice(long min, long max, Pageable pageable) ;
+	public Page<RealEstate> getRealStateSellAcreage(float min, float max, Pageable pageable) ;
+	
+	public Page<RealEstate> getRealStateSellAreaPrice(String area,long min, long max, Pageable pageable) ;
+	public Page<RealEstate> getRealStateSellAreaAcreage(String area,float min, float max, Pageable pageable) ;
+	public Page<RealEstate> getRealStateSellPriceAcreage(long minprice, long maxprice, float min, float max,Pageable pageable) ;
+	public Page<RealEstate> getRealStateSellAreaPriceAcreage(String area ,long minprice, long maxprice, float min, float max,Pageable pageable) ;
 	
 }

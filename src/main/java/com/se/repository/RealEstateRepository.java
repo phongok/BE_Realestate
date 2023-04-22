@@ -34,11 +34,7 @@ public interface RealEstateRepository extends JpaRepository<RealEstate, Long> {
 	/////
 	
 	
-	@Query(value = "SELECT * FROM realestatedb.realestate  where id_category = 2  and status=\"Đang hoạt động\" and area = ?1 and price>= ?2 and price<= ?3 and acreage >= ?4 and acreage <= ?5;", nativeQuery = true)
-	public Page<RealEstate> getRentFTArea(String area ,long priceMin, long priceMax, float acreageMin, float acreageMax , Pageable pageable);
 	
-	@Query(value = "SELECT * FROM realestatedb.realestate  where id_category = 2  and status=\"Đang hoạt động\" and price>= ?2 and price<= ?3 and acreage >= ?4 and acreage <= ?5;", nativeQuery = true)
-	public Page<RealEstate> getRentFTNonArea(String area ,long priceMin, long priceMax, float acreageMin, float acreageMax , Pageable pageable);
 	
 	///
 	
@@ -48,11 +44,46 @@ public interface RealEstateRepository extends JpaRepository<RealEstate, Long> {
 	@Query(value = "SELECT * FROM realestatedb.realestate  where id_category = 2  and status=\"Đang hoạt động\" and price>= ?1 and price<= ?2 ", nativeQuery = true)
 	public Page<RealEstate> getRentFTPrice(long priceMin, long priceMax, Pageable pageable ); 
 	
-	
 	@Query(value = "SELECT * FROM realestatedb.realestate  where id_category = 2  and status=\"Đang hoạt động\" and acreage >= :acreageMin and acreage <= :acreageMax", nativeQuery = true)
 	public Page<RealEstate> getRentFTAcreage(@Param("acreageMin") float acreageMin,@Param("acreageMax") float acreageMax, Pageable pageable );
 	
+	@Query(value = "SELECT * FROM realestatedb.realestate  where id_category = 2  and status=\"Đang hoạt động\" and area = ?1 and price>= ?2 and price<= ?3", nativeQuery = true)
+	public Page<RealEstate> getRentFTAreaPrice(String area, long priceMin, long priceMax, Pageable pageable ) ;
+	
+	@Query(value = "SELECT * FROM realestatedb.realestate  where id_category = 2  and status=\"Đang hoạt động\" and area = :area and acreage >= :acreageMin and acreage <= :acreageMax", nativeQuery = true)
+	public Page<RealEstate> getRentFTAreaAcreage( @Param("area") String area, @Param("acreageMin") float acreageMin, @Param("acreageMax") float acreageMax, Pageable pageable ) ;
+	
+	@Query(value = "SELECT * FROM realestatedb.realestate  where id_category = 2  and status=\"Đang hoạt động\" and price >= :priceMin and price<= :priceMax and acreage >= :acreageMin and acreage <= :acreageMax", nativeQuery = true)
+	public Page<RealEstate> getRentFTPriceAcreage(@Param("priceMin") long priceMin, @Param("priceMax") long priceMax,  @Param("acreageMin") float acreageMin, @Param("acreageMax") float acreageMax, Pageable pageable ) ;
+	
+	@Query(value = "SELECT * FROM realestatedb.realestate  where id_category = 2  and status=\"Đang hoạt động\" and area = :area and price >= :priceMin and price<= :priceMax and acreage >= :acreageMin and acreage <= :acreageMax", nativeQuery = true)
+	public Page<RealEstate> getRentFTAreaPriceAcreage(@Param("area") String area ,@Param("priceMin") long priceMin, @Param("priceMax") long priceMax,  @Param("acreageMin") float acreageMin, @Param("acreageMax") float acreageMax, Pageable pageable ) ;
 	///
+	
+	
+	///
+	
+		@Query(value = "SELECT * FROM realestatedb.realestate  where id_category = 1  and status=\"Đang hoạt động\" and area = ?1 ", nativeQuery = true)
+		public Page<RealEstate> getSellFTArea(String area, Pageable pageable ); ///ok
+		
+		@Query(value = "SELECT * FROM realestatedb.realestate  where id_category = 1  and status=\"Đang hoạt động\" and price>= ?1 and price<= ?2 ", nativeQuery = true)
+		public Page<RealEstate> getSellFTPrice(long priceMin, long priceMax, Pageable pageable ); 
+		
+		@Query(value = "SELECT * FROM realestatedb.realestate  where id_category = 1  and status=\"Đang hoạt động\" and acreage >= :acreageMin and acreage <= :acreageMax", nativeQuery = true)
+		public Page<RealEstate> getSellFTAcreage(@Param("acreageMin") float acreageMin,@Param("acreageMax") float acreageMax, Pageable pageable );
+		
+		@Query(value = "SELECT * FROM realestatedb.realestate  where id_category = 1  and status=\"Đang hoạt động\" and area = ?1 and price>= ?2 and price<= ?3", nativeQuery = true)
+		public Page<RealEstate> getSellFTAreaPrice(String area, long priceMin, long priceMax, Pageable pageable ) ;
+		
+		@Query(value = "SELECT * FROM realestatedb.realestate  where id_category = 1  and status=\"Đang hoạt động\" and area = :area and acreage >= :acreageMin and acreage <= :acreageMax", nativeQuery = true)
+		public Page<RealEstate> getSellFTAreaAcreage( @Param("area") String area, @Param("acreageMin") float acreageMin, @Param("acreageMax") float acreageMax, Pageable pageable ) ;
+		
+		@Query(value = "SELECT * FROM realestatedb.realestate  where id_category = 1  and status=\"Đang hoạt động\" and price >= :priceMin and price<= :priceMax and acreage >= :acreageMin and acreage <= :acreageMax", nativeQuery = true)
+		public Page<RealEstate> getSellFTPriceAcreage(@Param("priceMin") long priceMin, @Param("priceMax") long priceMax,  @Param("acreageMin") float acreageMin, @Param("acreageMax") float acreageMax, Pageable pageable ) ;
+		
+		@Query(value = "SELECT * FROM realestatedb.realestate  where id_category = 1  and status=\"Đang hoạt động\" and area = :area and price >= :priceMin and price<= :priceMax and acreage >= :acreageMin and acreage <= :acreageMax", nativeQuery = true)
+		public Page<RealEstate> getSellFTAreaPriceAcreage(@Param("area") String area ,@Param("priceMin") long priceMin, @Param("priceMax") long priceMax,  @Param("acreageMin") float acreageMin, @Param("acreageMax") float acreageMax, Pageable pageable ) ;
+		///
 	
 	
 }
