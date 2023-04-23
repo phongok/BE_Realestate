@@ -188,6 +188,52 @@ public class RealEstateServiceImlp implements RealEstateService {
 		// TODO Auto-generated method stub
 		return realEstateRepository.getSellFTAreaPriceAcreage(area, minprice, maxprice, min, max, pageable);
 	}
+
+	@Override
+	public Page<RealEstate> getRealStateNewsTypeArea(long idnewsType, String area, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return realEstateRepository.getNewsTypeFTArea(idnewsType, area, pageable);
+	}
+
+	@Override
+	public Page<RealEstate> getRealStateNewsTypePrice(long idnewsType, long min, long max, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return realEstateRepository.getNewsTypeFTPrice(idnewsType, min, max, pageable);
+	}
+
+	@Override
+	public Page<RealEstate> getRealStateNewsTypeAcreage(long idnewsType, float min, float max, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return realEstateRepository.getNewsTypeFTAcreage(idnewsType, min, max, pageable);
+	}
+
+	@Override
+	public Page<RealEstate> getRealStateNewsTypeAreaPrice(long idnewsType, String area, long min, long max,
+			Pageable pageable) {
+		// TODO Auto-generated method stub
+		return realEstateRepository.getNewsTypeFTAreaPrice(idnewsType, area, min, max, pageable);
+	}
+
+	@Override
+	public Page<RealEstate> getRealStateNewsTypeAreaAcreage(long idnewsType, String area, float min, float max,
+			Pageable pageable) {
+		// TODO Auto-generated method stub
+		return realEstateRepository.getNewsTypeFTAreaAcreage(idnewsType, area, min, max, pageable);
+	}
+
+	@Override
+	public Page<RealEstate> getRealStateNewsTypePriceAcreage(long idnewsType, long minprice, long maxprice, float min,
+			float max, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return realEstateRepository.getNewsTypeFTPriceAcreage(idnewsType, minprice, maxprice, min, max, pageable);
+	}
+
+	@Override
+	public Page<RealEstate> getRealStateNewsTypeAreaPriceAcreage(long idnewsType, String area, long minprice,
+			long maxprice, float min, float max, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return realEstateRepository.getNewsTypeFTAreaPriceAcreage(idnewsType, area, minprice, maxprice, min, max, pageable);
+	}
 	
 	
 	

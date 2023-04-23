@@ -83,7 +83,30 @@ public interface RealEstateRepository extends JpaRepository<RealEstate, Long> {
 		
 		@Query(value = "SELECT * FROM realestatedb.realestate  where id_category = 1  and status=\"Đang hoạt động\" and area = :area and price >= :priceMin and price<= :priceMax and acreage >= :acreageMin and acreage <= :acreageMax", nativeQuery = true)
 		public Page<RealEstate> getSellFTAreaPriceAcreage(@Param("area") String area ,@Param("priceMin") long priceMin, @Param("priceMax") long priceMax,  @Param("acreageMin") float acreageMin, @Param("acreageMax") float acreageMax, Pageable pageable ) ;
-		///
+		
+		
+		///Theo Loại bài đăng
+		
+		@Query(value = "SELECT * FROM realestatedb.realestate  where id_news_type = ?1  and status=\"Đang hoạt động\" and area = ?2 ", nativeQuery = true)
+		public Page<RealEstate> getNewsTypeFTArea(long id, String area, Pageable pageable ); ///ok
+		
+		@Query(value = "SELECT * FROM realestatedb.realestate  where id_news_type = ?1  and status=\"Đang hoạt động\" and price>= ?2 and price<= ?3 ", nativeQuery = true)
+		public Page<RealEstate> getNewsTypeFTPrice(long id, long priceMin, long priceMax, Pageable pageable ); 
+		
+		@Query(value = "SELECT * FROM realestatedb.realestate  where id_news_type = :idNewsType  and status=\"Đang hoạt động\" and acreage >= :acreageMin and acreage <= :acreageMax", nativeQuery = true)
+		public Page<RealEstate> getNewsTypeFTAcreage( @Param("idNewsType") long idNewsType , @Param("acreageMin") float acreageMin,@Param("acreageMax") float acreageMax, Pageable pageable );
+		
+		@Query(value = "SELECT * FROM realestatedb.realestate  where id_news_type = :idNewsType  and status=\"Đang hoạt động\" and area = :area and price>= :priceMin and price<= :priceMax", nativeQuery = true)
+		public Page<RealEstate> getNewsTypeFTAreaPrice(@Param("idNewsType") long idNewsType,@Param("area") String area,@Param("priceMin") long priceMin,@Param("priceMax") long priceMax, Pageable pageable ) ;
+		
+		@Query(value = "SELECT * FROM realestatedb.realestate  where id_news_type = :idNewsType  and status=\"Đang hoạt động\" and area = :area and acreage >= :acreageMin and acreage <= :acreageMax", nativeQuery = true)
+		public Page<RealEstate> getNewsTypeFTAreaAcreage(@Param("idNewsType") long idNewsType,  @Param("area") String area, @Param("acreageMin") float acreageMin, @Param("acreageMax") float acreageMax, Pageable pageable ) ;
+		
+		@Query(value = "SELECT * FROM realestatedb.realestate  where id_news_type = :idNewsType  and status=\"Đang hoạt động\" and price >= :priceMin and price<= :priceMax and acreage >= :acreageMin and acreage <= :acreageMax", nativeQuery = true)
+		public Page<RealEstate> getNewsTypeFTPriceAcreage(@Param("idNewsType") long idNewsType, @Param("priceMin") long priceMin, @Param("priceMax") long priceMax,  @Param("acreageMin") float acreageMin, @Param("acreageMax") float acreageMax, Pageable pageable ) ;
+		
+		@Query(value = "SELECT * FROM realestatedb.realestate  where id_news_type = :idNewsType  and status=\"Đang hoạt động\" and area = :area and price >= :priceMin and price<= :priceMax and acreage >= :acreageMin and acreage <= :acreageMax", nativeQuery = true)
+		public Page<RealEstate> getNewsTypeFTAreaPriceAcreage(@Param("idNewsType") long idNewsType, @Param("area") String area ,@Param("priceMin") long priceMin, @Param("priceMax") long priceMax,  @Param("acreageMin") float acreageMin, @Param("acreageMax") float acreageMax, Pageable pageable ) ;
 	
 	
 }

@@ -61,6 +61,7 @@ public class RealEstateController {
 		return "Delete home id = " + id;
 	}
 
+	
 	@GetMapping("listrealestateSell")
 	public Page<RealEstate> listHomeSell(@RequestParam(defaultValue = "0") int page,
 			@RequestParam(defaultValue = "1") int size, @RequestParam(defaultValue = "") String area,
@@ -155,6 +156,55 @@ public class RealEstateController {
 		return realEstateService.getHome_Rent(pageable);
 	}
 
+	
+
+	@GetMapping("realestates-newstype/{id_newstype}")
+	public Page<RealEstate> getRealStateByIdNewsType(@PathVariable long id_newstype, @RequestParam(defaultValue = "0") int page,
+			@RequestParam(defaultValue = "1") int size, @RequestParam(defaultValue = "") String area,
+			@RequestParam(defaultValue = "0") long priceMin, @RequestParam(defaultValue = "0") long priceMax,
+			@RequestParam(defaultValue = "0") float acreageMin, @RequestParam(defaultValue = "0") float acreageMax) {
+		Pageable pageable = PageRequest.of(page, size);
+		Page<RealEstate> pageRealEstate = null;
+		if (area.equalsIgnoreCase("") == false || priceMin>0 || priceMax >0 || acreageMin>0 || acreageMax>0) {
+			
+			if (priceMin==0 && priceMax == 0 && acreageMin==0 && acreageMax==0) {
+				return realEstateService.getRealStateNewsTypeArea(id_newstype, area, pageable);
+			}
+			else if (area.equalsIgnoreCase("") && acreageMin==0 && acreageMax==0) {
+				System.out.println("Thuc hien 1 minh price");
+				return realEstateService.getRealStateNewsTypePrice(id_newstype,priceMin, priceMax, pageable);
+			}
+			else if (area.equalsIgnoreCase("") && priceMin==0 && priceMax==0) {
+				System.out.println(acreageMin);
+				System.out.println(acreageMax);
+				System.out.println("Thuc hien 1 minh acreage");
+				return realEstateService.getRealStateNewsTypeAcreage(id_newstype, acreageMin, acreageMax, pageable);
+			}
+			else if (acreageMin==0 && acreageMax==0) {
+				System.out.println("thuc hien price area");
+				return realEstateService.getRealStateNewsTypeAreaPrice(id_newstype, area, priceMin, priceMax, pageable);
+			}
+			else if (priceMin == 0 && priceMax==0) {
+				System.out.println("thuc hien acreage area");
+				return realEstateService.getRealStateNewsTypeAreaAcreage(id_newstype, area, acreageMin, acreageMax, pageable);
+				
+			}
+			else if (area.equalsIgnoreCase("")==true) {
+				System.out.println("thuc hien acreage price");
+				return realEstateService.getRealStateNewsTypePriceAcreage(id_newstype, priceMin, priceMax, acreageMin, acreageMax, pageable);
+			}
+			else if (area.equalsIgnoreCase("") == false && priceMin>0 && priceMax >0 && acreageMin>0 && acreageMax>0) {
+				return realEstateService.getRealStateNewsTypeAreaPriceAcreage(id_newstype,area, priceMin, priceMax, acreageMin, acreageMax, pageable);
+			}
+			
+		}
+		
+		
+		
+		System.out.println("thuc hien tong");
+		return realEstateService.getRealStateByNewsTypeID(id_newstype, pageable);
+	}
+
 	@GetMapping("realestates/count")
 	public String getAccountNumber() {
 		return realEstateService.getRealEstateNumber() + "";
@@ -173,12 +223,4 @@ public class RealEstateController {
 		Pageable pageable = PageRequest.of(page, size);
 		return realEstateService.getRealStateByUserID(id_user, pageable);
 	}
-
-	@GetMapping("realestates-newstype/{id_newstype}")
-	public Page<RealEstate> getRealStateByIdNewsType(@PathVariable long id_newstype,
-			@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "12") int size) {
-		Pageable pageable = PageRequest.of(page, size);
-		return realEstateService.getRealStateByNewsTypeID(id_newstype, pageable);
-	}
-
 }

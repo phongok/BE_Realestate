@@ -50,4 +50,16 @@ public interface RealEstateService {
 	public Page<RealEstate> getRealStateSellPriceAcreage(long minprice, long maxprice, float min, float max,Pageable pageable) ;
 	public Page<RealEstate> getRealStateSellAreaPriceAcreage(String area ,long minprice, long maxprice, float min, float max,Pageable pageable) ;
 	
+	/// Theo newsType
+	
+	
+	public Page<RealEstate> getRealStateNewsTypeArea(long idnewsType,String area, Pageable pageable) ;
+	public Page<RealEstate> getRealStateNewsTypePrice(long idnewsType,long min, long max, Pageable pageable) ;
+	public Page<RealEstate> getRealStateNewsTypeAcreage(long idnewsType,float min, float max, Pageable pageable) ;
+	
+	public Page<RealEstate> getRealStateNewsTypeAreaPrice(long idnewsType,String area,long min, long max, Pageable pageable) ;
+	public Page<RealEstate> getRealStateNewsTypeAreaAcreage(long idnewsType,String area,float min, float max, Pageable pageable) ;
+	public Page<RealEstate> getRealStateNewsTypePriceAcreage(long idnewsType,long minprice, long maxprice, float min, float max,Pageable pageable) ;
+	public Page<RealEstate> getRealStateNewsTypeAreaPriceAcreage(long idnewsType,String area ,long minprice, long maxprice, float min, float max,Pageable pageable) ;
+	
 }

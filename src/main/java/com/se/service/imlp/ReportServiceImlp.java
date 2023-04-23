@@ -34,7 +34,7 @@ public class ReportServiceImlp implements ReportService{
 	public Report StickReport(long id) {
 		// TODO Auto-generated method stub
 		Report report = reportReponsitory.findById(id).get();
-		report.setStatus("Đã đọc");
+		report.setStatus("Đã xác nhận");
 		reportReponsitory.save(report);
 		return report;
 		
