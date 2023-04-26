@@ -149,6 +149,14 @@ public class UserServicesImpl implements UserServices{
 		return user;
 	}
 
+	@Override
+	public User lockUser(long id) {
+		User user = userRepository.findById(id).get();
+		user.setStatus("Đã khóa");
+		userRepository.save(user);
+		return user;
+	}
+
 
 
 	

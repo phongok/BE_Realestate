@@ -92,5 +92,10 @@ public class UserController {
 	public User unlockUser(@RequestParam long userid) {
 		return userServices.unlockUser(userid);
 	}
+
+	@PostMapping("lockuser")
+	public User lockUser(@RequestParam long userid) {
+		return userServices.lockUser(userid);
+	}
 	
 }

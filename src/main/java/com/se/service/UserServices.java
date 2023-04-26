@@ -35,6 +35,7 @@ public interface UserServices {
 	
 	public User unlockUser(long id);
 	
+	public User lockUser(long id);
 	
 	
 }
