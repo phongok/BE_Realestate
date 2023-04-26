@@ -50,7 +50,7 @@ public class UserServicesImpl implements UserServices{
 	private JwtUltility jwtUltility = new JwtUltility();
 	
 	@Override
-	public User saveUser(UserDTO u) {
+	public User registerUser(UserDTO u) {
 		
 		Role memberRole = roleServices.getMemberRole(Long.valueOf(2));
 		System.out.println(memberRole);
@@ -164,6 +164,26 @@ public class UserServicesImpl implements UserServices{
 		user.setSurplus(user.getSurplus()+money);
 		userRepository.save(user);
 		return user;
+	}
+
+	@Override
+	public User saveUser(UserDTO u, long role) {
+		Role memberRole = roleServices.getMemberRole(role);
+		System.out.println(memberRole);
+		
+		Set<Role> roles = new HashSet<>();
+		roles.add(memberRole);
+		
+		User user = new User();
+		user.setUsername(u.getUsername());
+		user.setPassword(bcryptEncoder.encode(u.getPassword()));
+		user.setRoles(roles);
+		user.setStatus("Đang hoạt động");
+		user.setUrl("https://res.cloudinary.com/dps8mwvsi/image/upload/v1666187220/cld-sample-2.jpg");
+		user.setName(u.getUsername());
+		System.out.println(user);
+		
+		return userRepository.save(user);
 	}
 
 

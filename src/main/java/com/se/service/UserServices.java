@@ -13,7 +13,7 @@ import com.se.entity.User;
 import com.se.entity.UserPrincipal;
 
 public interface UserServices {
-	public User saveUser(UserDTO u);
+	public User registerUser(UserDTO u);
 
 	public UserPrincipal getUserByUsername(String username);
 	
@@ -38,6 +38,8 @@ public interface UserServices {
 	public User lockUser(long id);
 	
 	public User PublicMoney(long id, double money) ;
+	
+	public User saveUser(UserDTO u, long role);
 	
 	
 }

@@ -56,7 +56,7 @@ public class AuthenController {
 	
 	@PostMapping("/register")
 	public User registerUser(@RequestBody UserDTO u) {
-		return userServices.saveUser(u);
+		return userServices.registerUser(u);
 	}
 	
 	
