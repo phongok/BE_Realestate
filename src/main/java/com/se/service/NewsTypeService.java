@@ -21,4 +21,6 @@ public interface NewsTypeService {
 	
 	public Page<NewsType> getAllNewsPage_Paging(String keyword, Pageable pageable) ;
 	public Page<NewsType> getAllNewsPage_Paging( Pageable pageable) ;
+	
+	public NewsType LockNewsType(long id) ;
 }

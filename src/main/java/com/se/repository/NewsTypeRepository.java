@@ -31,4 +31,7 @@ public interface NewsTypeRepository extends PagingAndSortingRepository<NewsType,
 	@Query(value = "SELECT * FROM realestatedb.news_type where idcategory = 2 and status = 'Đang hoạt động'", nativeQuery = true)
 	public List<NewsType> getNewsTypeRent() ;
 	
+	
+	
+	
 }

@@ -63,6 +63,11 @@ public class NewsTypeController {
 		newsTypeService.saveNewsType(newsType);
 		return newsType;
 	}
+	
+	@PostMapping("newsTypesLock")
+	public NewsType LockNewsType(@RequestParam long idNewsType) {
+		return newsTypeService.LockNewsType(idNewsType);
+	}
 
 	
 	@GetMapping("newsTypes/count")

@@ -54,7 +54,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable().authorizeRequests()
 				.antMatchers("/authen/register", "/authen/login", "/authen/hello", "/authen/signout", "/api/checkuser",
 						"/api/users/{username}", "/api/users-paging", "/api/users-lock","/api/unlockuser", "/api/userscount",
-						"/api/deductmoneypost", "/api/caterorys", "/api/caterorys/{id}", "/api/newsTypes",
+						"/api/deductmoneypost", "/api/caterorys", "/api/caterorys/{id}", "/api/newsTypes","/api/newsTypesLock",
 						"/api/newsTypes/count", "/api/newsType-paging", "/api/newsTypesSell/listSell",
 						"/api/newsTypesRent/listRent", "/api/realestates", "/api/realestates-paging",
 						"/api/realestates/{id}", "/api/realestates/count", "/api/listrealestateSell",

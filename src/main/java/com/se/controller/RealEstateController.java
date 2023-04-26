@@ -163,6 +163,7 @@ public class RealEstateController {
 			@RequestParam(defaultValue = "1") int size, @RequestParam(defaultValue = "") String area,
 			@RequestParam(defaultValue = "0") long priceMin, @RequestParam(defaultValue = "0") long priceMax,
 			@RequestParam(defaultValue = "0") float acreageMin, @RequestParam(defaultValue = "0") float acreageMax) {
+		
 		Pageable pageable = PageRequest.of(page, size);
 		Page<RealEstate> pageRealEstate = null;
 		if (area.equalsIgnoreCase("") == false || priceMin>0 || priceMax >0 || acreageMin>0 || acreageMax>0) {

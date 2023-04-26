@@ -72,6 +72,15 @@ public class NewsTypeServiceImlp implements NewsTypeService{
 		return newsTypeRepository.findAll(pageable);
 	}
 
+	@Override
+	public NewsType LockNewsType(long id) {
+		// TODO Auto-generated method stub
+		NewsType newsType = newsTypeRepository.findById(id).get();
+		newsType.setStatus("Đã khóa");
+		newsTypeRepository.save(newsType);
+		return newsType;
+	}
+
 	
 
 }
