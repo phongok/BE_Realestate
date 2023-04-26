@@ -157,6 +157,15 @@ public class UserServicesImpl implements UserServices{
 		return user;
 	}
 
+	@Override
+	public User PublicMoney(long id ,double money) {
+		// TODO Auto-generated method stub
+		User user = userRepository.findById(id).get();
+		user.setSurplus(user.getSurplus()+money);
+		userRepository.save(user);
+		return user;
+	}
+
 
 
 	

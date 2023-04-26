@@ -37,5 +37,7 @@ public interface UserServices {
 	
 	public User lockUser(long id);
 	
+	public User PublicMoney(long id, double money) ;
+	
 	
 }

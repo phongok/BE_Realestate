@@ -98,4 +98,9 @@ public class UserController {
 		return userServices.lockUser(userid);
 	}
 	
+	
+	@PostMapping("user/publicmoney")
+	public User PublicMoney(@RequestParam long userid, @RequestParam double money) {
+		return userServices.PublicMoney(userid, money);
+	}
 }
