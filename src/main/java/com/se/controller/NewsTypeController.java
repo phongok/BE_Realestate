@@ -35,6 +35,11 @@ public class NewsTypeController {
 		return newsTypeService.getAllNewsTypeSell();
 	}
 	
+	@GetMapping("newsTypes")
+	public  List<NewsType> getAll() {
+		return newsTypeService.getAllNewsType();
+	}
+	
 	
 
 	@GetMapping("newsTypesRent/listRent")

@@ -81,6 +81,12 @@ public class NewsTypeServiceImlp implements NewsTypeService{
 		return newsType;
 	}
 
+	@Override
+	public List<NewsType> getAllNewsType() {
+		// TODO Auto-generated method stub
+		return  newsTypeRepository.findAll();
+	}
+
 	
 
 }

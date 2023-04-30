@@ -23,4 +23,6 @@ public interface NewsTypeService {
 	public Page<NewsType> getAllNewsPage_Paging( Pageable pageable) ;
 	
 	public NewsType LockNewsType(long id) ;
+	
+	public List<NewsType> getAllNewsType();
 }
