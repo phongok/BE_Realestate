@@ -108,5 +108,7 @@ public interface RealEstateRepository extends JpaRepository<RealEstate, Long> {
 		@Query(value = "SELECT * FROM realestatedb.realestate  where id_news_type = :idNewsType  and status=\"Đang hoạt động\" and area = :area and price >= :priceMin and price<= :priceMax and acreage >= :acreageMin and acreage <= :acreageMax", nativeQuery = true)
 		public Page<RealEstate> getNewsTypeFTAreaPriceAcreage(@Param("idNewsType") long idNewsType, @Param("area") String area ,@Param("priceMin") long priceMin, @Param("priceMax") long priceMax,  @Param("acreageMin") float acreageMin, @Param("acreageMax") float acreageMax, Pageable pageable ) ;
 	
-	
+		///filter admin
+		@Query(value = "SELECT * FROM realestatedb.realestate where id_news_type = :idNewsType", nativeQuery = true)
+		public Page<RealEstate> getAllByNewsTypeAdmin(@Param("idNewsType") long idNewsType, Pageable pageable);
 }

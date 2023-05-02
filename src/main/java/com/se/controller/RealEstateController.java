@@ -32,6 +32,8 @@ public class RealEstateController {
 		realEstateService.saveHome(home);
 		return home;
 	}
+	
+	
 
 	@PutMapping("realestates")
 	public RealEstate updateHome(@RequestBody RealEstate home) {
@@ -213,8 +215,14 @@ public class RealEstateController {
 
 	@GetMapping("realestates-paging")
 	public Page<RealEstate> getAllRealState_Paging(@RequestParam(defaultValue = "0") int page,
-			@RequestParam(defaultValue = "10") int size) {
+			@RequestParam(defaultValue = "10") int size, @RequestParam(defaultValue = "0") long idNewsType) {
 		Pageable pageable = PageRequest.of(page, size);
+		Page<RealEstate> pageRealEstate = null;
+		if (idNewsType>0 ) {
+			if (idNewsType>0) {
+				return realEstateService.getAllByNewsTypeAdmin(idNewsType, pageable);
+			}
+		}
 		return realEstateService.getAllRealState_Paging(pageable);
 	}
 

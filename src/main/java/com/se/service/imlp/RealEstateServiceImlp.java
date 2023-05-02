@@ -234,6 +234,14 @@ public class RealEstateServiceImlp implements RealEstateService {
 		// TODO Auto-generated method stub
 		return realEstateRepository.getNewsTypeFTAreaPriceAcreage(idnewsType, area, minprice, maxprice, min, max, pageable);
 	}
+
+	
+	//FillerAdmin
+	@Override
+	public Page<RealEstate> getAllByNewsTypeAdmin(long idNewsType, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return realEstateRepository.getAllByNewsTypeAdmin(idNewsType, pageable);
+	}
 	
 	
 	

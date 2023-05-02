@@ -62,4 +62,9 @@ public interface RealEstateService {
 	public Page<RealEstate> getRealStateNewsTypePriceAcreage(long idnewsType,long minprice, long maxprice, float min, float max,Pageable pageable) ;
 	public Page<RealEstate> getRealStateNewsTypeAreaPriceAcreage(long idnewsType,String area ,long minprice, long maxprice, float min, float max,Pageable pageable) ;
 	
+	
+	///FilterAdmin
+	
+	public Page<RealEstate> getAllByNewsTypeAdmin(long idNewsType, Pageable pageable);
+	
 }
