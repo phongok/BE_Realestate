@@ -30,6 +30,7 @@ public interface RealEstateService {
 	
 	
 	
+	
 	public Page<RealEstate> getRealStateRentArea(String area, Pageable pageable) ;
 	public Page<RealEstate> getRealStateRentPrice(long min, long max, Pageable pageable) ;
 	public Page<RealEstate> getRealStateRentAcreage(float min, float max, Pageable pageable) ;

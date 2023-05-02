@@ -1,5 +1,8 @@
 package com.se.controller;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,80 +19,74 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.se.dto.UserDTO;
+import com.se.dto.UserUpdate;
+import com.se.entity.Role;
 import com.se.entity.User;
 import com.se.service.UserServices;
-
 
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class UserController {
-	
+
 	@Autowired
 	private UserServices userServices;
-	
-	
+
 	@GetMapping("users/{username}")
 	public User getUserByUserName(@PathVariable String username) {
-		
+
 		return userServices.getUserByUserName(username);
 	}
-	
+
 	@GetMapping("users/count")
 	public String getAccountNumber() {
-		return userServices.getUserNumber()+"";
+		return userServices.getUserNumber() + "";
 	}
-	
-	
+
 	@GetMapping("users-paging")
 	public Page<User> getAllUser_Paging(@RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size, @RequestParam String keyword) {
-		 Pageable pageable = PageRequest.of(page, size);
-		 Page<User> pageuser  = null; 
-		 System.out.println("kw = "+keyword);
+			@RequestParam(defaultValue = "10") int size, @RequestParam String keyword) {
+		Pageable pageable = PageRequest.of(page, size);
+		Page<User> pageuser = null;
+		System.out.println("kw = " + keyword);
 		if (keyword.equalsIgnoreCase("") == false) {
-			 pageuser = userServices.getAllUser_Paging(keyword, pageable);
+			pageuser = userServices.getAllUser_Paging(keyword, pageable);
 		} else {
 			System.out.println("tjh2");
 			pageuser = userServices.getAllUser_Paging(pageable);
 		}
-		 
-		 return pageuser;
+
+		return pageuser;
 	}
-	
 
 	@GetMapping("users-lock")
 	public Page<User> getAllUser_Lock(@RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size, @RequestParam String keyword) {
-		 Pageable pageable = PageRequest.of(page, size);
-		 Page<User> pageuser  = null; 
-		 System.out.println("kw = "+keyword);
+			@RequestParam(defaultValue = "10") int size, @RequestParam String keyword) {
+		Pageable pageable = PageRequest.of(page, size);
+		Page<User> pageuser = null;
+		System.out.println("kw = " + keyword);
 		if (keyword.equalsIgnoreCase("") == false) {
-			 pageuser = userServices.getAllUserLock(keyword, pageable);
+			pageuser = userServices.getAllUserLock(keyword, pageable);
 		} else {
 			System.out.println("tjh2");
 			pageuser = userServices.getAllUserLock(pageable);
 		}
-		 
-		 return pageuser;
+
+		return pageuser;
 	}
-	
-	
+
 	@GetMapping("checkuser")
 	public User getUserLogin(@RequestParam String token) {
-		System.out.println("token = " +token);
+		System.out.println("token = " + token);
 		return userServices.getCurrentAuthenticatedUser(token);
 	}
-	
-	
+
 	@PostMapping("deductmoneypost")
 	public void Deductmoneywhenpost(@RequestParam long idUser) {
-		
+
 		userServices.Deductmoneywhenposting(idUser);
 	}
-	
-	
-	
+
 	@PostMapping("unlockuser")
 	public User unlockUser(@RequestParam long userid) {
 		return userServices.unlockUser(userid);
@@ -99,15 +96,21 @@ public class UserController {
 	public User lockUser(@RequestParam long userid) {
 		return userServices.lockUser(userid);
 	}
-	
-	
+
 	@PostMapping("user/publicmoney")
 	public User PublicMoney(@RequestParam long userid, @RequestParam double money) {
 		return userServices.PublicMoney(userid, money);
 	}
-	
+
 	@PostMapping("user/create")
 	public User createUser(@RequestBody UserDTO u, @RequestParam long role) {
 		return userServices.saveUser(u, role);
+	}
+
+	@PutMapping("user/update")
+	public User updateUser(@RequestBody UserUpdate userUpdate
+			, @RequestParam long roleUpdate) {
+		
+		return userServices.UpdateUser(userUpdate, roleUpdate);
 	}
 }

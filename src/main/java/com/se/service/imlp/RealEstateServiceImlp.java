@@ -39,7 +39,8 @@ public class RealEstateServiceImlp implements RealEstateService {
 		}
 		return home;
 	}
-
+	
+	
 	@Override
 	public void saveHome(RealEstate home) {
 		// TODO Auto-generated method stub
@@ -242,6 +243,8 @@ public class RealEstateServiceImlp implements RealEstateService {
 		// TODO Auto-generated method stub
 		return realEstateRepository.getAllByNewsTypeAdmin(idNewsType, pageable);
 	}
+
+	
 	
 	
 	

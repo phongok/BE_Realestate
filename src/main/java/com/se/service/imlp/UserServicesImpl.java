@@ -20,6 +20,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.se.dto.UserDTO;
+import com.se.dto.UserUpdate;
 import com.se.entity.Permission;
 import com.se.entity.Role;
 import com.se.entity.User;
@@ -184,6 +185,35 @@ public class UserServicesImpl implements UserServices{
 		System.out.println(user);
 		
 		return userRepository.save(user);
+	}
+
+	@Override
+	public User UpdateUser(UserUpdate u, long role) {
+		// TODO Auto-generated method stub
+		User user = userRepository.findById(u.getIdUserUpdate()).get();
+		
+		Role memberRole = roleServices.getMemberRole(role);
+		System.out.println(memberRole);
+		
+		Set<Role> roles = new HashSet<>();
+		roles.add(memberRole);
+		
+		user.setName(u.getNameUpdate());
+		user.setUsername(u.getEmailUpdate());
+		user.setPhone(u.getPhoneUpdate());
+		user.setSurplus(u.getSurplusUpdate());
+		user.setStatus(u.getStatusUpdate());
+		user.setUrl(u.getImg1Update());
+		user.setRoles(roles);
+		
+		userRepository.save(user);
+		return user ;
+	}
+
+	@Override
+	public User getUserById(long id) {
+		// TODO Auto-generated method stub
+		return userRepository.findById(id).get();
 	}
 
 

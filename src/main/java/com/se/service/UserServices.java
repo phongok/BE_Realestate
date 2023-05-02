@@ -8,7 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.se.dto.UserDTO;
-
+import com.se.dto.UserUpdate;
 import com.se.entity.User;
 import com.se.entity.UserPrincipal;
 
@@ -40,6 +40,11 @@ public interface UserServices {
 	public User PublicMoney(long id, double money) ;
 	
 	public User saveUser(UserDTO u, long role);
+	
+	public User UpdateUser(UserUpdate u, long role);
+	
+	public User getUserById(long id);
+	
 	
 	
 }
