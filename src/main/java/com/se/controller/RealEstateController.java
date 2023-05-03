@@ -215,12 +215,18 @@ public class RealEstateController {
 
 	@GetMapping("realestates-paging")
 	public Page<RealEstate> getAllRealState_Paging(@RequestParam(defaultValue = "0") int page,
-			@RequestParam(defaultValue = "10") int size, @RequestParam(defaultValue = "0") long idNewsType) {
+			@RequestParam(defaultValue = "10") int size, @RequestParam(defaultValue = "0") long idNewsType, @RequestParam(defaultValue = "") String username  ) {
 		Pageable pageable = PageRequest.of(page, size);
 		Page<RealEstate> pageRealEstate = null;
-		if (idNewsType>0 ) {
+		if (idNewsType>0 || username.equalsIgnoreCase("") == false ) {
 			if (idNewsType>0) {
 				return realEstateService.getAllByNewsTypeAdmin(idNewsType, pageable);
+			}
+			else if (username.equalsIgnoreCase("") == false) {
+				return realEstateService.getAllByUserNameAdmin(username, pageable);
+			}
+			else if (idNewsType>0 && username.equalsIgnoreCase("") == false) {
+				return realEstateService.getAllByNewsTypeUserNameAdmin(idNewsType, username, pageable);
 			}
 		}
 		return realEstateService.getAllRealState_Paging(pageable);

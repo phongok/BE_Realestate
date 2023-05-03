@@ -111,4 +111,10 @@ public interface RealEstateRepository extends JpaRepository<RealEstate, Long> {
 		///filter admin
 		@Query(value = "SELECT * FROM realestatedb.realestate where id_news_type = :idNewsType", nativeQuery = true)
 		public Page<RealEstate> getAllByNewsTypeAdmin(@Param("idNewsType") long idNewsType, Pageable pageable);
+		
+		@Query(value = "SELECT * FROM realestatedb.realestate where id_user = :idUser", nativeQuery = true)
+		public Page<RealEstate> getAllByUserNameAdmin(@Param("idUser") long idUser, Pageable pageable);
+		
+		@Query(value = "SELECT * FROM realestatedb.realestate where  id_news_type = :idNewsType and id_user = :idUser ", nativeQuery = true)
+		public Page<RealEstate> getAllByNewsTypeUserNameAdmin(@Param("idNewsType") long idNewsType , @Param("idUser") long idUser, Pageable pageable);
 }

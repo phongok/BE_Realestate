@@ -14,12 +14,16 @@ import org.springframework.stereotype.Service;
 import com.se.entity.RealEstate;
 import com.se.entity.User;
 import com.se.repository.RealEstateRepository;
+import com.se.repository.UserRepository;
 import com.se.service.RealEstateService;
 
 @Service
 public class RealEstateServiceImlp implements RealEstateService {
 	@Autowired
 	private RealEstateRepository realEstateRepository;
+	
+	@Autowired
+	private UserRepository userRepository;
 
 	@Override
 	public List<RealEstate> getAllHome() {
@@ -242,6 +246,20 @@ public class RealEstateServiceImlp implements RealEstateService {
 	public Page<RealEstate> getAllByNewsTypeAdmin(long idNewsType, Pageable pageable) {
 		// TODO Auto-generated method stub
 		return realEstateRepository.getAllByNewsTypeAdmin(idNewsType, pageable);
+	}
+
+	@Override
+	public Page<RealEstate> getAllByUserNameAdmin(String username, Pageable pageable) {
+	
+		User user = userRepository.findUserByUsername(username);
+		return realEstateRepository.getAllByUserNameAdmin(user.getId(), pageable) ;
+	}
+
+	@Override
+	public Page<RealEstate> getAllByNewsTypeUserNameAdmin(long idNewsType, String username, Pageable pageable) {
+	
+		User user = userRepository.findUserByUsername(username);
+		return realEstateRepository.getAllByNewsTypeUserNameAdmin(idNewsType, user.getId(), pageable);
 	}
 
 	

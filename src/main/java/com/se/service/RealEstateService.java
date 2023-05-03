@@ -68,4 +68,8 @@ public interface RealEstateService {
 	
 	public Page<RealEstate> getAllByNewsTypeAdmin(long idNewsType, Pageable pageable);
 	
+	public Page<RealEstate> getAllByUserNameAdmin(String username, Pageable pageable);
+	
+	public Page<RealEstate> getAllByNewsTypeUserNameAdmin(long idNewsType, String username, Pageable pageable);
+	
 }
