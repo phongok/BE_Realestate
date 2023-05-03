@@ -19,6 +19,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.se.dto.UpdateInforDTO;
 import com.se.dto.UserDTO;
 import com.se.dto.UserUpdate;
 import com.se.entity.Permission;
@@ -214,6 +215,18 @@ public class UserServicesImpl implements UserServices{
 	public User getUserById(long id) {
 		// TODO Auto-generated method stub
 		return userRepository.findById(id).get();
+	}
+
+	@Override
+	public User UpdateInforUser(UpdateInforDTO u) {
+		// TODO Auto-generated method stub
+		User user = userRepository.findById(u.getIdUserUpdate()).get();
+		user.setName(u.getNameUpdate());
+		user.setUsername(u.getEmailUpdate());
+		user.setPhone(u.getPhoneUpdate());
+		user.setUrl(u.getImg1Update());
+		userRepository.save(user);
+		return user;
 	}
 
 

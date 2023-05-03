@@ -7,6 +7,7 @@ package com.se.service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import com.se.dto.UpdateInforDTO;
 import com.se.dto.UserDTO;
 import com.se.dto.UserUpdate;
 import com.se.entity.User;
@@ -45,6 +46,6 @@ public interface UserServices {
 	
 	public User getUserById(long id);
 	
-	
+	public User UpdateInforUser(UpdateInforDTO u);
 	
 }

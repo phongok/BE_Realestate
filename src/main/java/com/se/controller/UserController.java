@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.se.dto.UpdateInforDTO;
 import com.se.dto.UserDTO;
 import com.se.dto.UserUpdate;
 import com.se.entity.Role;
@@ -112,5 +113,11 @@ public class UserController {
 			, @RequestParam long roleUpdate) {
 		
 		return userServices.UpdateUser(userUpdate, roleUpdate);
+	}
+	
+	@PutMapping("user/updateInfor")
+	public User updateUserInfor(@RequestBody UpdateInforDTO userUpdate) {
+		
+		return userServices.UpdateInforUser(userUpdate);
 	}
 }
