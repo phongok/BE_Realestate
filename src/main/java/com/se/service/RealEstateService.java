@@ -5,6 +5,8 @@ import java.util.UUID;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import com.se.entity.RealEstate;
 import com.se.entity.User;
@@ -71,5 +73,12 @@ public interface RealEstateService {
 	public Page<RealEstate> getAllByUserNameAdmin(String username, Pageable pageable);
 	
 	public Page<RealEstate> getAllByNewsTypeUserNameAdmin(long idNewsType, String username, Pageable pageable);
+	
+	
+	///FilterUser
+	
+	
+	public Page<RealEstate> getAllByNewsTypeUser(@Param("idNewsType") long idNewsType,@Param("idUser") long idUser , Pageable pageable);
+	public Page<RealEstate> getAllByUser(@Param("idUser") long idUser , Pageable pageable);
 	
 }

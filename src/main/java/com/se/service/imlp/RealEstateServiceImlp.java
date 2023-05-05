@@ -262,6 +262,19 @@ public class RealEstateServiceImlp implements RealEstateService {
 		return realEstateRepository.getAllByNewsTypeUserNameAdmin(idNewsType, user.getId(), pageable);
 	}
 
+	//FillerUser
+	@Override
+	public Page<RealEstate> getAllByNewsTypeUser(long idNewsType, long idUser, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return realEstateRepository.getAllByNewsTypeUser(idNewsType, idUser, pageable);
+	}
+
+	@Override
+	public Page<RealEstate> getAllByUser(long idUser, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return realEstateRepository.getAllByUser(idUser, pageable);
+	}
+
 	
 	
 	

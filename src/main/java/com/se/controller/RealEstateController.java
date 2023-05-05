@@ -231,6 +231,17 @@ public class RealEstateController {
 		}
 		return realEstateService.getAllRealState_Paging(pageable);
 	}
+	
+	@GetMapping("realestates-paging-user")
+	public Page<RealEstate> getAllRealState_Paging_User(@RequestParam(defaultValue = "0") int page,
+			@RequestParam(defaultValue = "10") int size, @RequestParam(defaultValue = "0") long idNewsType,  @RequestParam(defaultValue = "0") long idUser  ) {
+		Pageable pageable = PageRequest.of(page, size);
+		Page<RealEstate> pageRealEstate = null;
+		if (idNewsType>0) {
+			realEstateService.getAllByNewsTypeUser(idNewsType, idUser, pageable);
+		}
+		return realEstateService.getAllByUser(idUser, pageable);
+	}
 
 	@GetMapping("realestates-user/{id_user}")
 	public Page<RealEstate> getRealStateByIdUser(@PathVariable long id_user, @RequestParam(defaultValue = "0") int page,
