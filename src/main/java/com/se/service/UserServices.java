@@ -48,4 +48,6 @@ public interface UserServices {
 	
 	public User UpdateInforUser(UpdateInforDTO u);
 	
+	public String checkUser(String userName);
+	
 }

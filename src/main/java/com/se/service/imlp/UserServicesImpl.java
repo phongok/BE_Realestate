@@ -229,6 +229,17 @@ public class UserServicesImpl implements UserServices{
 		return user;
 	}
 
+	@Override
+	public String checkUser(String userName) {
+		// TODO Auto-generated method stub
+		User user =  userRepository.findByUsername(userName);
+		System.out.println(user);
+		if (user!=null) {
+			return "Đã tồn tại";
+		}
+		return "Không tồn tại";
+	}
+
 
 
 	

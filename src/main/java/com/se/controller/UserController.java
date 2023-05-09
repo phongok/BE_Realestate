@@ -120,4 +120,9 @@ public class UserController {
 		
 		return userServices.UpdateInforUser(userUpdate);
 	}
+	
+	@PostMapping("user/checkUser")
+	public String checkUser(@RequestParam String userName) {
+		return userServices.checkUser(userName);
+	}
 }

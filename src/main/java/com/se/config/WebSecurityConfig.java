@@ -53,7 +53,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().authorizeRequests()
 				.antMatchers("/authen/register", "/authen/login", "/authen/hello", "/authen/signout", "/api/checkuser",
-						"/api/users/{username}", "/api/users-paging", "/api/users-lock", "/api/lockuser",
+						"/api/users/{username}", "/api/users-paging", "/api/users-lock", "/api/lockuser","/api/user/checkUser",
 						"/api/user/publicmoney", "/api/unlockuser", "/api/user/create","/api/user/update","/api/user/updateInfor", "/api/userscount",
 						"/api/deductmoneypost", "/api/caterorys", "/api/caterorys/{id}", "/api/newsTypes","/api/newsTypes",
 						"/api/newsTypesLock", "/api/newsTypes/count", "/api/newsType-paging",

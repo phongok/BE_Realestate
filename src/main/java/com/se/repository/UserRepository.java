@@ -34,5 +34,10 @@ public interface UserRepository extends PagingAndSortingRepository<User, Long> {
 	public Page<User> getUserLock(String keyword, Pageable pageable );
 	
 	
+	@Query(value = "select *from realestatedb.user where username = :username", nativeQuery = true)
+	User findByUsername(@Param("username") String username);
+	
+	
+	
 
 }
