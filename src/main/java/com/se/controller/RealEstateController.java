@@ -238,7 +238,7 @@ public class RealEstateController {
 		Pageable pageable = PageRequest.of(page, size);
 		Page<RealEstate> pageRealEstate = null;
 		if (idNewsType>0) {
-			realEstateService.getAllByNewsTypeUser(idNewsType, idUser, pageable);
+		 return	realEstateService.getAllByNewsTypeUser(idNewsType, idUser, pageable);
 		}
 		return realEstateService.getAllByUser(idUser, pageable);
 	}

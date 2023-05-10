@@ -125,4 +125,5 @@ public class UserController {
 	public String checkUser(@RequestParam String userName) {
 		return userServices.checkUser(userName);
 	}
+	
 }
