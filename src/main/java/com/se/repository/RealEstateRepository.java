@@ -127,5 +127,15 @@ public interface RealEstateRepository extends JpaRepository<RealEstate, Long> {
 		public Page<RealEstate> getAllByUser(@Param("idUser") long idUser , Pageable pageable);
 		
 		
+		@Query(value = "	SELECT *\r\n"
+				+ "		FROM realestatedb.realestate\r\n"
+				+ "		WHERE id_category = 1\r\n"
+				+ "		ORDER BY price DESC\r\n"
+				+ "		LIMIT 20;", nativeQuery = true)
+		public List<RealEstate> getRe20();
+		
+	
+		
+		
 		
 }

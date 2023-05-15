@@ -249,4 +249,11 @@ public class RealEstateController {
 		Pageable pageable = PageRequest.of(page, size);
 		return realEstateService.getRealStateByUserID(id_user, pageable);
 	}
+	
+	@GetMapping("outstanding")
+	public List<RealEstate> getRealStateoutstanding(
+			) {
+		
+		return realEstateService.getRe20();
+	}
 }

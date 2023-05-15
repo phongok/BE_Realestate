@@ -275,6 +275,12 @@ public class RealEstateServiceImlp implements RealEstateService {
 		return realEstateRepository.getAllByUser(idUser, pageable);
 	}
 
+	@Override
+	public List<RealEstate> getRe20() {
+		// TODO Auto-generated method stub
+		return realEstateRepository.getRe20();
+	}
+
 	
 	
 	

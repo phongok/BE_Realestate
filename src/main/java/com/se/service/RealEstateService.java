@@ -81,4 +81,6 @@ public interface RealEstateService {
 	public Page<RealEstate> getAllByNewsTypeUser(@Param("idNewsType") long idNewsType,@Param("idUser") long idUser , Pageable pageable);
 	public Page<RealEstate> getAllByUser(@Param("idUser") long idUser , Pageable pageable);
 	
+	public List<RealEstate> getRe20();
+	
 }
