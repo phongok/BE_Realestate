@@ -256,4 +256,10 @@ public class RealEstateController {
 		
 		return realEstateService.getRe20();
 	}
+	
+	
+	@PutMapping("realestate/delete")
+	public RealEstate deleteRealEstate(@RequestParam long idre) {
+		return realEstateService.deleteRealEstate(idre);
+	}
 }

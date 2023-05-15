@@ -83,4 +83,8 @@ public interface RealEstateService {
 	
 	public List<RealEstate> getRe20();
 	
+	public RealEstate deleteRealEstate(long idre) ;
+		
+	
+	
 }

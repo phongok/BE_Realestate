@@ -58,7 +58,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 						"/api/deductmoneypost", "/api/caterorys", "/api/caterorys/{id}", "/api/newsTypes","/api/newsTypes",
 						"/api/newsTypesLock", "/api/newsTypes/count", "/api/newsType-paging",
 						"/api/newsTypesSell/listSell", "/api/newsTypesRent/listRent", "/api/realestates",
-						"/api/realestates-paging", "/api/realestates-paging-user","/api/outstanding","/api/realestates/{id}", "/api/realestates/count",
+						"/api/realestates-paging", "/api/realestates-paging-user","/api/outstanding","/api/realestate/delete","/api/realestates/{id}", "/api/realestates/count",
 						"/api/listrealestateSell", "/api/listrealestateRent", "/api/realestates-user/{id_user}",
 						"/api/realestates-newstype/{id_newstype}", "/api/bills", "/api/bills-paging", "/api/getRevenue",
 						"/api/reports-paging", "/api/stickreport", "/api/findReportByID", "/api/realestatesaves",

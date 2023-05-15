@@ -81,7 +81,7 @@ public class RealEstateServiceImlp implements RealEstateService {
 	@Override
 	public Page<RealEstate> getAllRealState_Paging(Pageable pageable) {
 		// TODO Auto-generated method stub
-		return realEstateRepository.findAll(pageable);
+		return realEstateRepository.getAllByAdmin(pageable);
 	}
 
 	@Override
@@ -279,6 +279,15 @@ public class RealEstateServiceImlp implements RealEstateService {
 	public List<RealEstate> getRe20() {
 		// TODO Auto-generated method stub
 		return realEstateRepository.getRe20();
+	}
+
+	@Override
+	public RealEstate deleteRealEstate(long idre) {
+		// TODO Auto-generated method stub
+		RealEstate estate = realEstateRepository.findById(idre).get();
+		estate.setStatus("Đã khóa");
+		realEstateRepository.save(estate);
+		return estate ;
 	}
 
 	

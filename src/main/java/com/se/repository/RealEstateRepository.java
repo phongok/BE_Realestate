@@ -109,13 +109,17 @@ public interface RealEstateRepository extends JpaRepository<RealEstate, Long> {
 		public Page<RealEstate> getNewsTypeFTAreaPriceAcreage(@Param("idNewsType") long idNewsType, @Param("area") String area ,@Param("priceMin") long priceMin, @Param("priceMax") long priceMax,  @Param("acreageMin") float acreageMin, @Param("acreageMax") float acreageMax, Pageable pageable ) ;
 	
 		///filter admin
-		@Query(value = "SELECT * FROM realestatedb.realestate where id_news_type = :idNewsType", nativeQuery = true)
+		
+		@Query(value = "SELECT * FROM realestatedb.realestate where status = 'Đang hoạt động' ", nativeQuery = true)
+		public Page<RealEstate> getAllByAdmin( Pageable pageable);
+		
+		@Query(value = "SELECT * FROM realestatedb.realestate where id_news_type = :idNewsType and status = 'Đang hoạt động'", nativeQuery = true)
 		public Page<RealEstate> getAllByNewsTypeAdmin(@Param("idNewsType") long idNewsType, Pageable pageable);
 		
-		@Query(value = "SELECT * FROM realestatedb.realestate where id_user = :idUser", nativeQuery = true)
+		@Query(value = "SELECT * FROM realestatedb.realestate where id_user = :idUser and status = 'Đang hoạt động'", nativeQuery = true)
 		public Page<RealEstate> getAllByUserNameAdmin(@Param("idUser") long idUser, Pageable pageable);
 		
-		@Query(value = "SELECT * FROM realestatedb.realestate where  id_news_type = :idNewsType and id_user = :idUser ", nativeQuery = true)
+		@Query(value = "SELECT * FROM realestatedb.realestate where  id_news_type = :idNewsType and id_user = :idUser and status = 'Đang hoạt động' ", nativeQuery = true)
 		public Page<RealEstate> getAllByNewsTypeUserNameAdmin(@Param("idNewsType") long idNewsType , @Param("idUser") long idUser, Pageable pageable);
 		
 		
