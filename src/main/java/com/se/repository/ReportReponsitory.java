@@ -22,6 +22,4 @@ public interface ReportReponsitory extends JpaRepository<Report, Long> {
 			+ "ORDER BY  status ASC, date_report DESC", nativeQuery = true)
 	public Page<Report> getAllReport( Pageable pageable) ;
 		
-	
-
 }
