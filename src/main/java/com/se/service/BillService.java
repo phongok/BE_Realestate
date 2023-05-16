@@ -18,4 +18,6 @@ public interface BillService {
 	public long getrevenue() ;
 	
 	public long getRevenueFromTo(Date from, Date to);
+	
+	public List<Double> getRevenueMonth();
 }

@@ -23,5 +23,10 @@ public interface BillRepository extends JpaRepository<Bill, Long> {
 	
 	@Query(value = "SELECT sum(totalmoney)  from realestatedb.bill WHERE datepay BETWEEN :from AND :to", nativeQuery = true)
 	public long getRevenueFromTo(@Param("from") Date from, @Param("to") Date to );
+	
+	@Query(value = "SELECT sum(totalmoney)  from realestatedb.bill WHERE month(datepay) =:month and year(datepay) =:year", nativeQuery = true)
+	public String getRevenueChart(@Param("month") int month, @Param("year") int year );
+	
+	
 
 }
