@@ -16,4 +16,6 @@ public interface ReportService {
 	
 	public Report getReportById(long id) ;
 	
+	public Page<Report> getReportSearch(String userName, Pageable pageable) ;
+	
 }

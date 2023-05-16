@@ -33,10 +33,12 @@ public class ReportController {
 	
 	@GetMapping("reports-paging")
 	public Page<Report> getAllNewsPagePaging(@RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size) {
+            @RequestParam(defaultValue = "10") int size, @RequestParam String userName) {
 		 Pageable pageable = PageRequest.of(page, size);
 		
-		
+		if (userName.equalsIgnoreCase("")==false) {
+			return reportService.getReportSearch(userName, pageable);
+		}
 		
 		 return reportService.getReport_Paging(pageable);
 	}

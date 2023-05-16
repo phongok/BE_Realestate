@@ -57,6 +57,12 @@ public class BillServiceImlp implements BillService {
 		// TODO Auto-generated method stub
 		return billRepository.getRevenueFromTo(from, to);
 	}
+	
+	@Override
+	public Page<Bill> getBillForUser(String userName, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return billRepository.getBillForUser(userName, pageable);
+	}
 
 	@Override
 	public List<Double> getRevenueMonth() {
@@ -169,5 +175,7 @@ public class BillServiceImlp implements BillService {
 		
 		return listData;
 	}
+
+	
 
 }

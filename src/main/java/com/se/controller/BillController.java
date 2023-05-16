@@ -38,11 +38,9 @@ public class BillController {
 	
 	@GetMapping("bills-paging")
 	public Page<Bill> getBillPageing(@RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size, @RequestParam String from, @RequestParam String to) {
+            @RequestParam(defaultValue = "10") int size, @RequestParam String from, @RequestParam String to, @RequestParam String userName) {
 		
 		 Pageable pageable = PageRequest.of(page, size);
-		 Page<Bill> pagebill  = null; 
-		
 		 DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		 
 		 Date fromDate = null;
@@ -60,14 +58,14 @@ public class BillController {
 			e.printStackTrace();
 		}
 		 
-		if (from.equalsIgnoreCase("") || to.equalsIgnoreCase("")) {
-			pagebill = billService.getBillAll(pageable);
-		} else {
-			System.out.println("tjh2");
-			pagebill = billService.getBillFromTo(fromDate, toDate, pageable);
+		 if (userName.equalsIgnoreCase("") == false) {
+			return billService.getBillForUser(userName, pageable);
 		}
+		 else if (from.equalsIgnoreCase("") ==false || to.equalsIgnoreCase("") ==false) {
+				return billService.getBillFromTo(fromDate, toDate, pageable);
+			}
 		 
-		 return pagebill;
+		 return billService.getBillAll(pageable); 
 	}
 	
 	

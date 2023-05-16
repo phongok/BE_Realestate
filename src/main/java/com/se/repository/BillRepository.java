@@ -28,5 +28,8 @@ public interface BillRepository extends JpaRepository<Bill, Long> {
 	public String getRevenueChart(@Param("month") int month, @Param("year") int year );
 	
 	
+	@Query(value = "select *from realestatedb.bill bill where bill.id_user = (select us.id from realestatedb.user us where us.username =:userName)", nativeQuery = true)
+	public Page<Bill> getBillForUser(@Param("userName")String userName, Pageable pageable) ;
+	
 
 }

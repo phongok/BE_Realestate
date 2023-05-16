@@ -27,7 +27,7 @@ public class ReportServiceImlp implements ReportService{
 	@Override
 	public Page<Report> getReport_Paging(Pageable pageable) {
 		// TODO Auto-generated method stub
-		return reportReponsitory.findAll(pageable);
+		return reportReponsitory.getAllReport(pageable);
 	}
 
 	@Override
@@ -51,6 +51,12 @@ public class ReportServiceImlp implements ReportService{
 			throw new RuntimeException("Khong tim thay");
 		}
 		return report;
+	}
+
+	@Override
+	public Page<Report> getReportSearch(String userName, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return reportReponsitory.getReportSearch(userName, pageable);
 	}
 
 }
