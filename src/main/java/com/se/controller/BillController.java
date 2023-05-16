@@ -71,8 +71,32 @@ public class BillController {
 	
 	
 	@GetMapping("getRevenue")
-	public String getRevenue() {
+	public long getRevenue() {
 		return billService.getrevenue();
 	}
+	
+	@GetMapping("getRevenueFromTo")
+	public long getRevenueFromTo(
+             @RequestParam String from, @RequestParam String to) {
+		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		 
+		 Date fromDate = null;
+		try {
+			fromDate = formatter.parse(from);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 Date toDate = null;
+		try {
+			toDate = formatter.parse(to);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 
+		return billService.getRevenueFromTo(fromDate, toDate);
+	}
+
 
 }

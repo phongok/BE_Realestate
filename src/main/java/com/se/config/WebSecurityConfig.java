@@ -60,7 +60,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 						"/api/newsTypesSell/listSell", "/api/newsTypesRent/listRent", "/api/realestates",
 						"/api/realestates-paging", "/api/realestates-paging-user","/api/outstanding","/api/realestate/delete","/api/realestates/{id}", "/api/realestates/count",
 						"/api/listrealestateSell", "/api/listrealestateRent", "/api/realestates-user/{id_user}",
-						"/api/realestates-newstype/{id_newstype}", "/api/bills", "/api/bills-paging", "/api/getRevenue",
+						"/api/realestates-newstype/{id_newstype}", "/api/bills", "/api/bills-paging", "/api/getRevenue","/api/getRevenueFromTo",
 						"/api/reports-paging", "/api/stickreport", "/api/findReportByID", "/api/realestatesaves",
 						"/api/realestatesaves/getlimit3", "/api/realestatesaves/forUser", "/api/realestatesaves/{id}",
 						"/api/reports")

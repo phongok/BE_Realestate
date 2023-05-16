@@ -45,9 +45,15 @@ public class BillServiceImlp implements BillService {
 	}
 
 	@Override
-	public String getrevenue() {
+	public long getrevenue() {
 		// TODO Auto-generated method stub
 		return billRepository.getSumBILL();
+	}
+
+	@Override
+	public long getRevenueFromTo(Date from, Date to) {
+		// TODO Auto-generated method stub
+		return billRepository.getRevenueFromTo(from, to);
 	}
 
 }
