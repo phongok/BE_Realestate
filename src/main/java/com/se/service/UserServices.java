@@ -49,6 +49,7 @@ public interface UserServices {
 	public User UpdateInforUser(UpdateInforDTO u);
 	
 	public String checkUser(String userName);
+	public User checkLock(String userName);
 	
 	
 }

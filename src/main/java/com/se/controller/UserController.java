@@ -126,4 +126,9 @@ public class UserController {
 		return userServices.checkUser(userName);
 	}
 	
+	@PostMapping("user/checkLock")
+	public User checkLock(@RequestParam String userName) {
+		return userServices.checkLock(userName);
+	}
+	
 }

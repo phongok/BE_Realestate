@@ -239,6 +239,12 @@ public class UserServicesImpl implements UserServices{
 		}
 		return "Không tồn tại";
 	}
+
+	@Override
+	public User checkLock(String userName) {
+		User user =  userRepository.findByUsername(userName);
+		return user;
+	}
 	
 	
 
