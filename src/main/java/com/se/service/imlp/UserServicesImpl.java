@@ -125,7 +125,7 @@ public class UserServicesImpl implements UserServices{
 	public void Deductmoneywhenposting(long id) {
 		// TODO Auto-generated method stub
 		User user = userRepository.findById(id).get();
-		user.setSurplus(user.getSurplus()-100000);
+		user.setSurplus(user.getSurplus()-50000);
 		userRepository.save(user);
 		
 	}
