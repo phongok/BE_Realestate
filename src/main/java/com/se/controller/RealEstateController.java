@@ -74,6 +74,7 @@ public class RealEstateController {
 		if (area.equalsIgnoreCase("") == false || priceMin>0 || priceMax >0 || acreageMin>0 || acreageMax>0) {
 			
 			if (priceMin==0 && priceMax == 0 && acreageMin==0 && acreageMax==0) {
+				System.out.println("Thcu hien 1 minh khu vuc");
 				return realEstateService.getRealStateSellArea(area, pageable);
 			}
 			else if (area.equalsIgnoreCase("") && acreageMin==0 && acreageMax==0) {

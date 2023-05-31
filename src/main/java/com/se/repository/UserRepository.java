@@ -30,7 +30,7 @@ public interface UserRepository extends PagingAndSortingRepository<User, Long> {
 	@Query(value = "SELECT * FROM realestatedb.user where status =\"Đã khóa\"", nativeQuery = true)
 	public Page<User> getUserLock(Pageable pageable);
 	
-	@Query(value = "SELECT * FROM realestatedb.user WHERE name LIKE %?1% OR username LIKE %?1% OR phonenumber LIKE %?1% and status =\"Đã khóa\" ", nativeQuery = true)
+	@Query(value = "SELECT * FROM realestatedb.user WHERE status =\"Đã khóa\" and (name LIKE %?1% OR username LIKE %?1% OR phonenumber LIKE %?1% )  ", nativeQuery = true)
 	public Page<User> getUserLock(String keyword, Pageable pageable );
 	
 	
